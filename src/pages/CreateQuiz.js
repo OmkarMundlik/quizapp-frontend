@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import style from '../styles/quizesPage.css'
 
 
-
 export default function CreateQuiz() {
     const navigate = useNavigate();
     const [subject, setSubject] = useState("");
@@ -65,7 +64,7 @@ export default function CreateQuiz() {
             questions: quizData
         };
 
-        fetch('http://localhost:8000/api/createquiz', {
+        fetch('https://quiz-app-backend-delta.vercel.app/api/createquiz', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
