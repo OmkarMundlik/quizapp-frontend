@@ -1,0 +1,25 @@
+.hero-heading {
+    margin-bottom: 4rem;
+}
+
+.hero-img-container {
+    margin-bottom: 4rem;
+}
+
+.hero-buttons {
+    margin-bottom: 4rem;
+}
+
+.social-media-icons {
+    margin-top: 4rem;
+}
+
+.icon-container {
+    width: 5%;
+    margin: 0 10px;
+}
+
+.social-media-icon {
+    width: 70px;
+    height: 70px;
+}

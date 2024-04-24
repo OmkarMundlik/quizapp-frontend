@@ -1,0 +1,27 @@
+.quiz-container {
+    width: 50vw;
+    margin: 0 auto;
+}
+
+/* Media Query for Tablet and Mobile View */
+@media (max-width: 768px) {
+    .quiz-container {
+        width: 90vw;
+    }
+}
+
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+  
+
+/* Media Query for Mobile View */
+@media (max-width: 480px) {
+    .quiz-container {
+        width: 100vw;
+        margin:2px;
+    }
+}

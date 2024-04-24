@@ -1,0 +1,24 @@
+.question-card {
+    max-width: 50rem;
+    padding: 5px;
+}
+
+.card-header {
+    background-color: #f8f9fa; /* light gray */
+}
+
+.card-title {
+    margin-bottom: 1rem;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Media Query for Mobile View */
+@media only screen and (max-width: 600px) {
+    .question-card {
+        max-width: 100%; /* Adjust width for smaller screens */
+    }
+}
