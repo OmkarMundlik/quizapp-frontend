@@ -16,7 +16,7 @@ export default function QuizesPage(props) {
   const [quiz, setQuiz] = useState(null);
   const fetchData = async () => {
     try {
-      const response = await fetch('https://spardhaweb.com/api/getallquizes', {
+      const response = await fetch('https://quiz-app-backend-delta.vercel.app/api/getallquizes', {
         method: "GET",
         headers: {
           "Content-Type": "application/json"

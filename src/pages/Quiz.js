@@ -20,7 +20,7 @@ export default function Quiz(props) {
     const {quizData, setQuizData} = useContext(ResultContext);
     const fetchData = async()=>{
         try {
-            const response = await fetch(`https://spardhaweb.com/api/getquiz/${id}`, {
+            const response = await fetch(`https://quiz-app-backend-delta.vercel.app/api/getquiz/${id}`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json"

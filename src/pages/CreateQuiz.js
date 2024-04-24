@@ -64,7 +64,7 @@ export default function CreateQuiz() {
             questions: quizData
         };
 
-        fetch('https://spardhaweb.com/api/createquiz', {
+        fetch('https://quiz-app-backend-delta.vercel.app/api/createquiz', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
