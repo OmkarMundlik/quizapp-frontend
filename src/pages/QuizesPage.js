@@ -12,6 +12,10 @@ export default function QuizesPage(props) {
     return `${day} ${month} ${year}`;
   };
 
+  const compareDates = (a, b) => {
+    return new Date(b.date) - new Date(a.date);
+  };
+
   const [quizes, setQuizes] = useState([]);
   const [quiz, setQuiz] = useState(null);
   const fetchData = async () => {
@@ -26,7 +30,10 @@ export default function QuizesPage(props) {
         throw new Error('Failed to fetch quizzes');
       }
       const data = await response.json();
-      setQuizes(data);
+      
+      // Sort the quizzes based on date in descending order
+      const sortedQuizzes = data.sort(compareDates);
+      setQuizes(sortedQuizzes);
     } catch (error) {
       console.error('Error fetching quizzes:', error);
     }
