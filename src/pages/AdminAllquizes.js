@@ -19,7 +19,7 @@ function AdminAllquizes() {
     // const [quiz, setQuiz] = useState(null);
     const fetchData = async () => {
         try {
-            const response = await fetch('https://quiz-app-backend-delta.vercel.app/getallquizes', {
+            const response = await fetch('https://quiz-app-backend-delta.vercel.app/api/getallquizes', {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json"
