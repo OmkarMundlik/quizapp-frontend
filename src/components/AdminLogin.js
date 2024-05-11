@@ -9,7 +9,7 @@ function AdminLogin() {
     const navigate = useNavigate();
 
     const handleLogin = async () => {
-        console.log('Hello');
+        // console.log('Hello');
         try {
             const response = await fetch('https://quiz-app-backend-delta.vercel.app/api/auth/adminlogin', {
                 method: 'POST', 
@@ -23,7 +23,7 @@ function AdminLogin() {
                 const data = await response.json(); //Fix: Use response.json() to parse the response body
                 const adminToken = data.adminToken;
                 localStorage.setItem('admin-token', adminToken);
-                console.log(localStorage.getItem('admin-token'));
+                // console.log(localStorage.getItem('admin-token'));
                 navigate('/adminpage');
                 // console.log('Admin token:', adminToken);
             } else {
