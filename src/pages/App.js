@@ -6,6 +6,10 @@ import Quiz from './Quiz';
 import Result from './Result';
 import ScoreState from '../context/ScoreState';
 import CreateQuiz from './CreateQuiz';
+import AdminLogin from '../components/AdminLogin';
+import AdminProtected from '../protectedComps/AdminProtected';
+import AdminPage from './AdminPage';
+import AdminAllquizes from './AdminAllquizes';
 
 function App() {
   const router = createBrowserRouter([
@@ -27,7 +31,19 @@ function App() {
     },
     {
       path : "/createquiz",
-      element : <CreateQuiz />
+      element : <AdminProtected Component={CreateQuiz}/>
+    },
+    {
+      path: "/adminlogin",
+      element: <AdminLogin />
+    },
+    {
+      path: "/adminpage", 
+      element: <AdminProtected Component={AdminPage}/>
+    },
+    {
+      path: "/allquizesforadmin",
+      element: <AdminProtected Component={AdminAllquizes}/>
     }
   ])
 

@@ -63,11 +63,13 @@ export default function CreateQuiz() {
             subject: subject,
             questions: quizData
         };
-
-        fetch('https://quiz-app-backend-delta.vercel.app/api/createquiz', {
+        const url = 'https://quiz-app-backend-delta.vercel.app/api/createquiz'
+        // const url = 'http://localhost:8000/api/createquiz'
+        fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'admin-token':localStorage.getItem('admin-token')
             },
             body: JSON.stringify(quizObj),
         })
