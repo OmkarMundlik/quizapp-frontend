@@ -53,7 +53,10 @@ export default function Footer() {
     className="text-center p-3"
     style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
   >
-    © {new Date().getFullYear()} Your Company Name
+    © {new Date().getFullYear()} SpardhaWeb
+    <br />
+    Contact: 8530370395
+    Mundlik Web Developers
   </div>
   {/* Copyright */}
 </footer>
