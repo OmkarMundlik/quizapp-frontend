@@ -19,7 +19,7 @@ export default function Result() {
             </div>
             </> : 
             <div>Start A Quiz First!!</div>}
-
+            
             <div className="center-container">
             <Link className="btn btn-primary" to="/allquizes">Back</Link>
             </div>

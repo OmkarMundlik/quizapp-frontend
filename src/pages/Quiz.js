@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Question from '../components/Question';
-import style from '../styles/Quiz.css'
+import '../styles/Quiz.css'
 import ResultContext from '../context/ResultContext';
 import { useNavigate, useParams } from 'react-router-dom';
+import Spinner from '../components/Spinner';
 
 
 export default function Quiz(props) {
@@ -16,7 +17,6 @@ export default function Quiz(props) {
       };
     const {quizId} = useParams();
     const [id, setId] = useState(quizId);
-    // const [quizData, setQuizData] = useState(null);
     const {quizData, setQuizData} = useContext(ResultContext);
     const fetchData = async()=>{
         try {
@@ -78,7 +78,7 @@ export default function Quiz(props) {
     }
     return (
         <>
-        {quizData && <>
+        {!quizData ? <Spinner /> : <>
             <h1>Daily Quiz : {formatDate(quizData.date)}</h1>
             <h3 style={{ textAlign: "center" }}>Subject : {quizData.subject}</h3>
             <div className="quiz-container">

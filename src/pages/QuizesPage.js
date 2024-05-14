@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import { Link } from 'react-router-dom';
+import Spinner from '../components/Spinner';
+import Footer from '../components/Footer';
 
 export default function QuizesPage(props) {
   const formatDate = (timestamp) => {
@@ -16,8 +18,7 @@ export default function QuizesPage(props) {
     return new Date(b.date) - new Date(a.date);
   };
 
-  const [quizes, setQuizes] = useState([]);
-  const [quiz, setQuiz] = useState(null);
+  const [quizes, setQuizes] = useState(null);
   const fetchData = async () => {
     try {
       const response = await fetch('https://quiz-app-backend-delta.vercel.app/api/getallquizes', {
@@ -50,7 +51,7 @@ export default function QuizesPage(props) {
 
       <div className="container">
         <div className="row justify-content-center">
-          {quizes.length !== 0 && quizes.map((quiz, index) => (
+          {!quizes ? <Spinner /> : quizes.map((quiz, index) => (
             <div key={index} className="col-md-4 mb-4">
               <div className="card h-100">
                 <div className="card-body">
@@ -63,6 +64,8 @@ export default function QuizesPage(props) {
           ))}
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 }

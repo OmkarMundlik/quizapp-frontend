@@ -1,22 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import '../styles/createquiz.css';
 import Alert from '../components/Alert';
 import { useNavigate } from "react-router-dom";
 import style from '../styles/quizesPage.css'
+import ResultContext from '../context/ResultContext';
 
 
 export default function CreateQuiz() {
     const navigate = useNavigate();
     const [subject, setSubject] = useState("");
     const [quizData, setQuizData] = useState([]);
-    const [alertStatus, setAlertStatus] = useState(null);
-    const [alertVisible, setAlertVisible] = useState(false);
     const [formData, setFormData] = useState({
         question: '',
         options: ['', '', '', ''],
         answer: '1',
         description: ''
     });
+    const {setAlertContext} = useContext(ResultContext);
+    const showAlert = (message, status)=>{
+        setAlertContext({
+            isActive: true,
+            message: message, 
+            status: status
+        })
+        setTimeout(() => {
+            setAlertContext(prevState => ({ ...prevState, isActive: false }));
+        }, 2000);
+    }
     const [selectedQuestion, setSelectedQuestion] = useState(null);
 
     const handleChange = (e, index) => {
@@ -51,12 +61,6 @@ export default function CreateQuiz() {
             </li>
         ));
     };
-
-    useEffect(() => {
-        setTimeout(() => {
-            setAlertVisible(true); 
-        }, 3000);
-    }, [setAlertStatus]); 
     
     const CreateQuiz = async () => {
         const quizObj = {
@@ -80,11 +84,13 @@ export default function CreateQuiz() {
                 return await response.json();
             })
             .then(data => {
-                setAlertStatus({message:data.message, status:data.status});
+                showAlert('Quiz Created Successfully!', 'success');
+                // setAlertStatus({message:data.message, status:data.status});
                 // console.log('Quiz created successfully:', data.message);
             })
             .catch(error => {
-                setAlertStatus({message:error.message, status:"error"});
+                // setAlertStatus({message:error.message, status:"error"});
+                showAlert('There was a problem creating the quiz', 'danger');
                 console.error('There was a problem creating the quiz:', error.message);
             });
 
@@ -116,7 +122,6 @@ export default function CreateQuiz() {
 
     return (
         <div className="container">
-            {alertVisible && alertStatus ?  <Alert message={alertStatus.message} status={alertStatus.status}/> : <></>}
             <div className="header">
                 <h1>Welcome Admin! Create Today's Quiz.</h1>
             </div>

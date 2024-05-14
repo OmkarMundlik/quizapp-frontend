@@ -10,6 +10,16 @@ import AdminLogin from '../components/AdminLogin';
 import AdminProtected from '../protectedComps/AdminProtected';
 import AdminPage from './AdminPage';
 import AdminAllquizes from './AdminAllquizes';
+import ArticleMain from './ArticleMain';
+import AllArticles from './AllArticles';
+import CreateArticle from './CreateArticle'
+import AllArticlesAdmin from './AllArticlesAdmin'
+import AllArticlesPage from './AllArticlesPage';
+import { useContext } from 'react';
+import ResultContext from '../context/ResultContext';
+
+import Alert from '../components/Alert';
+import Ebooks from './Ebooks';
 
 function App() {
   const router = createBrowserRouter([
@@ -44,16 +54,39 @@ function App() {
     {
       path: "/allquizesforadmin",
       element: <AdminProtected Component={AdminAllquizes}/>
+    },
+    {
+      path : "/articles",
+      element: <AllArticlesPage />
+    },
+    {
+      path : "/article/:articleId",
+      element : <ArticleMain />
+    },{
+      path: "/createarticle", 
+      element: <AdminProtected Component={CreateArticle}/>
+    },{
+      path: "/allarticles",
+      element:<AdminProtected Component={AllArticlesAdmin}/>
+    },
+    {
+      path: '/ebooks',
+      element: <Ebooks />
     }
-  ])
+  ]);
 
+  // const {alertContext} = useContext(ResultContext);
   return (
     <div className="unselectable">
       <ScoreState>
-      <RouterProvider router={router} />
+        {/* {alertContext.isActive && <Alert message={alertContext.message} status={alertContext.status} />} */} 
+        <Alert />
+        <RouterProvider router={router} />
+
       </ScoreState>
-      </div>
+    </div>
   );
+
 }
 
 export default App;

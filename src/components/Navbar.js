@@ -36,10 +36,10 @@ export default function Navbar() {
                             <Link className="nav-link active fs-5 px-3 font-weight-bold" aria-current="page" to="/allquizes"><b>Test Series</b></Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link active fs-5 px-3 font-weight-bold" aria-current="page" to="/"><b>चालू घडामोडी</b></Link>
+                            <Link className="nav-link active fs-5 px-3 font-weight-bold" aria-current="page" to="/articles"><b>चालू घडामोडी</b></Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link active fs-5 px-3 font-weight-bold" aria-current="page" to="/"><b>E-Books</b></Link>
+                            <Link className="nav-link active fs-5 px-3 font-weight-bold" aria-current="page" to="/ebooks"><b>E-Books</b></Link>
                         </li>
                     </ul>
                 </div>

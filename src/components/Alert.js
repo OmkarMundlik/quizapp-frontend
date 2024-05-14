@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import ResultContext from '../context/ResultContext';
 
-export default function Alert({ status, message }) {
-
+export default function Alert() {
+    const { alertContext } = useContext(ResultContext);
     return (
-         (
-            <div className={`alert alert-${status}`} role="alert">
-                {message}
-            </div>
+        (
+            <>
+                {alertContext.isActive && <div className={`alert alert-${alertContext.status}`} role="alert">
+                    {alertContext.message}
+                </div>}
+            </>
         )
     );
 }

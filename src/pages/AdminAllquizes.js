@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import ResultContext from '../context/ResultContext';
 
 function AdminAllquizes() {
     const formatDate = (timestamp) => {
@@ -14,6 +15,18 @@ function AdminAllquizes() {
     const compareDates = (a, b) => {
         return new Date(b.date) - new Date(a.date);
     };
+    const { setAlertContext } = useContext(ResultContext);
+    const showAlert = (message, status) => {
+        setAlertContext({
+            isActive: true,
+            message: message,
+            status: status
+        })
+        setTimeout(() => {
+            setAlertContext(prevState => ({ ...prevState, isActive: false }));
+        }, 2000);
+    }
+
 
     const [quizes, setQuizes] = useState([]);
     // const [quiz, setQuiz] = useState(null);
@@ -35,6 +48,7 @@ function AdminAllquizes() {
             setQuizes(sortedQuizzes);
         } catch (error) {
             console.error('Error fetching quizzes:', error);
+            showAlert('Unable to fetch quizes!', 'danger');
         }
     };
 
@@ -54,8 +68,9 @@ function AdminAllquizes() {
             console.log(success)
             let newQuizes = quizes.filter((quiz) => quiz._id !== id);
             setQuizes(newQuizes)
-            // showAlert({ message: "Note Deleted Successfully!", type: "success" })
+            showAlert('Quiz Deleted Successfully!!!', 'success');
         } catch (error) {
+            showAlert('Error in deleting Quiz!!!', 'danger');
             console.log(error);
         }
     }

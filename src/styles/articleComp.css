@@ -1,0 +1,19 @@
+.container-article {
+    margin-top: 20px;
+}
+
+.subheading {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 3px;
+    color: blue;
+}
+
+/* For smaller screens */
+@media screen and (max-width: 600px) {
+    .subheading {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 3px;
+    }
+}

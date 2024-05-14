@@ -1,20 +1,38 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import style from "../styles/adminpage.css"
+import '../styles/adminpage.css';
+import Navbar from '../components/Navbar';
+import ResultContext from '../context/ResultContext';
 
 function AdminPage() {
   const navigate = useNavigate();
+  const {setAlertContext} = useContext(ResultContext);
+  const showAlert = (message, status)=>{
+    setAlertContext({
+        isActive: true,
+        message: message, 
+        status: status
+    })
+    setTimeout(() => {
+        setAlertContext(prevState => ({ ...prevState, isActive: false }));
+    }, 2000);
+}
+
   const logout = () => {
     localStorage.removeItem("admin-token");
+    showAlert('logout successful!', 'success');
     navigate("/adminlogin");
   };
 
   return (
-    <div >
+    <div className="container">
+      <Navbar />
       <h1>Welcome Admin</h1>
       <div className="button-container">
         <Link className="button-link" to="/createquiz">Create Quiz</Link>
-        <Link className="button-link" to="/allquizesforadmin">See All Quizes</Link>
+        <Link className="button-link" to="/allquizesforadmin">See All Quizzes</Link>
+        <Link className="button-link" to="/createarticle">Create Article</Link>
+        <Link className="button-link" to="/allarticles">All Articles</Link>
         <button className="logout-button" onClick={logout}>Log out</button>
       </div>
     </div>
