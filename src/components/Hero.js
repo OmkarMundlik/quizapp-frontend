@@ -19,8 +19,8 @@ export default function Hero() {
             </div>
             <div className="hero-buttons d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
                 <Link className="btn btn-primary btn-lg px-4 gap-3" to="/allquizes" role="button">Test Series</Link>
-                <Link className="btn btn-primary btn-lg px-4 gap-3" to="/allquizes" role="button">चालू घडामोडी 2024</Link>
-                <Link className="btn btn-primary btn-lg px-4 gap-3" to="/allquizes" role="button">Study Material</Link>
+                <Link className="btn btn-primary btn-lg px-4 gap-3" to="/articles" role="button">चालू घडामोडी 2024</Link>
+                <Link className="btn btn-primary btn-lg px-4 gap-3" to="/ebooks" role="button">Study Material</Link>
             </div>
             {/* <h1>Follow Us On Social Media To be Updated </h1>
             <section className="social-media-icons d-flex justify-content-center align-items-center p-4">
