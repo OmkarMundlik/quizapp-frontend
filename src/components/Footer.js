@@ -55,7 +55,7 @@ export default function Footer() {
   >
     © {new Date().getFullYear()} SpardhaWeb
     <br />
-    Contact: 8530370395
+    Contact Us at: omkarmundlik11@gmail.com
     Mundlik Web Developers
   </div>
   {/* Copyright */}
