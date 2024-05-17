@@ -57,17 +57,17 @@ function AllArticles() {
                   <div className="card">
                     <div style={{ display: 'flex', justifyContent: 'flex-end', position: 'absolute', right: 0, padding: '2px' }}
                     >
-                      <span className=" badge rounded-pill bg-danger p-2 px-3">
+                      {/* <span className=" badge rounded-pill bg-danger p-2 px-3">
                         IMP
                         <span className="visually-hidden">unread messages</span>
-                      </span>
+                      </span> */}
                     </div>
                     <img src={!article.imageUrl ? "https://t4.ftcdn.net/jpg/05/81/84/71/360_F_581847176_eF540XqFGHDdGPZxyh5NtWHNzgs0XFk6.jpg" : article.imageUrl} className="card-img-top" alt="..." />
                     <div className="card-body">
                       <Link to={`/article/${article._id}`} style={{ textDecoration: "none", color: "#000" }}><h5 className="card-title">{article.heading}</h5></Link>
                       <p className="card-text">{article.text}</p>
                       <Link rel="noreferrer" to={`/article/${article._id}`} className="btn btn-sm btn-dark">Read More</Link>
-                      <p className="card-text my-2"><small className="text-muted">By {"anonymous"} on {new Date(article.date).toUTCString()}</small></p>
+                      <p className="card-text my-2"><small className="text-muted">By spardhaweb@team on {new Date(article.date).toUTCString()}</small></p>
                     </div>
                   </div>
                 </div>
