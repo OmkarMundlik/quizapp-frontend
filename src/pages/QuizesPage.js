@@ -18,10 +18,12 @@ export default function QuizesPage(props) {
     return new Date(b.date) - new Date(a.date);
   };
 
+  const HOST = process.env.REACT_APP_HOST_NAME;
+
   const [quizes, setQuizes] = useState(null);
   const fetchData = async () => {
     try {
-      const response = await fetch('https://quiz-app-backend-delta.vercel.app/api/getallquizes', {
+      const response = await fetch(HOST + 'api/getallquizes', {
         method: "GET",
         headers: {
           "Content-Type": "application/json"

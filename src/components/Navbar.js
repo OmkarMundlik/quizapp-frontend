@@ -41,6 +41,19 @@ export default function Navbar() {
                         <li className="nav-item">
                             <Link className="nav-link active fs-5 px-3 font-weight-bold" aria-current="page" to="/ebooks"><b>E-Books</b></Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link active fs-5 px-3 font-weight-bold" aria-current="page" to="/about-us"><b>About Us</b></Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link active fs-5 px-3 font-weight-bold" aria-current="page" to="/contact-us"><b>Contact Us</b></Link>
+                        </li>
+                        {/* <li className="nav-item">
+                            <Link className="nav-link active fs-5 px-3 font-weight-bold" aria-current="page" to="/terms-conditions"><b>Terms & Conditions</b></Link>
+                        </li>
+
+                        <li className="nav-item">
+                            <Link className="nav-link active fs-5 px-3 font-weight-bold" aria-current="page" to="/privacy-policy"><b>Privacy Policy</b></Link>
+                        </li> */}
                     </ul>
                 </div>
             </div>

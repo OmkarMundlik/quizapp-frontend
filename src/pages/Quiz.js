@@ -15,12 +15,13 @@ export default function Quiz(props) {
         const year = date.getFullYear();
         return `${day} ${month} ${year}`;
       };
+    const HOST = process.env.REACT_APP_HOST_NAME;
     const {quizId} = useParams();
     const [id, setId] = useState(quizId);
     const {quizData, setQuizData} = useContext(ResultContext);
     const fetchData = async()=>{
         try {
-            const response = await fetch(`https://quiz-app-backend-delta.vercel.app/api/getquiz/${id}`, {
+            const response = await fetch(HOST + `api/getquiz/${id}`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json"

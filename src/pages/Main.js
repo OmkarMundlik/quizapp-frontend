@@ -6,16 +6,19 @@ import Footer from '../components/Footer'
 import ArticleMain from './ArticleMain'
 import AllArticles from './AllArticles'
 import Spinner from '../components/Spinner'
+import AboutUs from './AboutUs'
 
 export default function Main() {
+  const hostname = process.env.HOST;
   return (
     <div>
         <Navbar />
         <Hero />
-        {/* <ArticleMain imageUrl={"https://buffer.com/library/content/images/2023/10/free-images.jpg"} heading={"Beautiful Lady"} text={"this is some text which i want  to display over here this is some text which i want  to display over here this is some text which i want  to display over here this is some text which i want  to display over here this is some text which i want  to display over here this is some text which i want  to display over here"} articles={articles}/> */}
-        {/* <h2>Current Affairs</h2>
-        <AllArticles /> */}
+
+        {/* <AboutUs /> */}
         <Footer />
+        
+
     </div>
   )
 }

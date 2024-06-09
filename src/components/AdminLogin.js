@@ -7,7 +7,8 @@ function AdminLogin() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const {alertContext, setAlertContext} = useContext(ResultContext);
-
+    const HOST = process.env.REACT_APP_HOST_NAME;
+    console.log(HOST)
     // useEffect(() => {
     //     if (alertContext.isActive) {
     //       const timeout = setTimeout(() => {
@@ -32,8 +33,8 @@ function AdminLogin() {
 
     const handleLogin = async () => {
         // console.log('Hello');
-        try {  //https://quiz-app-backend-delta.vercel.app
-            const response = await fetch('https://quiz-app-backend-delta.vercel.app/api/auth/adminlogin', {
+        try {  
+            const response = await fetch(HOST + 'api/auth/adminlogin', {
                 method: 'POST', 
                 headers: {
                     'Content-Type': 'application/json'

@@ -20,6 +20,11 @@ import ResultContext from '../context/ResultContext';
 
 import Alert from '../components/Alert';
 import Ebooks from './Ebooks';
+import UploadContent from './UploadContent';
+import AboutUs from './AboutUs';
+import ContactUs from './ContactUs';
+import TermsConditions from './TermsConditions';
+import PrivacyPolicy from './PrivacyPolicy';
 
 function App() {
   const router = createBrowserRouter([
@@ -72,6 +77,25 @@ function App() {
     {
       path: '/ebooks',
       element: <Ebooks />
+    },
+    {
+      path:'/uploadcontent',
+      element: <AdminProtected Component={UploadContent} />
+    },{
+      path: "/about-us",
+      element: <AboutUs />
+    },
+    {
+      path:"/contact-us",
+      element: <ContactUs />
+    },
+    {
+      path: "/terms-conditions",
+      element: <TermsConditions />
+    },
+    {
+      path: "/privacy-policy",
+      element: <PrivacyPolicy />
     }
   ]);
 

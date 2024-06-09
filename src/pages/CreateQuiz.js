@@ -7,6 +7,7 @@ import ResultContext from '../context/ResultContext';
 
 
 export default function CreateQuiz() {
+    const HOST = process.env.REACT_APP_HOST_NAME;
     const navigate = useNavigate();
     const [subject, setSubject] = useState("");
     const [quizData, setQuizData] = useState([]);
@@ -67,7 +68,7 @@ export default function CreateQuiz() {
             subject: subject,
             questions: quizData
         };
-        const url = 'https://quiz-app-backend-delta.vercel.app/api/createquiz'
+        const url = HOST + 'api/createquiz'
         // const url = 'http://localhost:8000/api/createquiz'
         fetch(url, {
             method: 'POST',

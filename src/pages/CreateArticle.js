@@ -19,6 +19,8 @@ export default function CreateQuiz() {
         text: ""
     });
 
+    const HOST = process.env.REACT_APP_HOST_NAME;
+
     const { setAlertContext } = useContext(ResultContext);
 
     const showAlert = (message, status) => {
@@ -100,8 +102,7 @@ export default function CreateQuiz() {
             };
 
             console.log(articleObj);
-            // const url = 'https://quiz-app-backend-delta.vercel.app/api/createarticle'
-            const url = 'https://quiz-app-backend-delta.vercel.app/api/createarticle';
+            const url = HOST + 'api/createarticle';
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {

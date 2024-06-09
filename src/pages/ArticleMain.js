@@ -18,10 +18,10 @@ const ArticleMain = () => {
     const year = date.getFullYear();
     return `${month} ${day}, ${year}`;
   };
-
+  const HOST = process.env.REACT_APP_HOST_NAME;
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://quiz-app-backend-delta.vercel.app/api/article/${articleId}`, {
+      const response = await fetch(HOST + `api/article/${articleId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

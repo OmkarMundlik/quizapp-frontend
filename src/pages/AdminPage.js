@@ -33,6 +33,8 @@ function AdminPage() {
         <Link className="button-link" to="/allquizesforadmin">See All Quizzes</Link>
         <Link className="button-link" to="/createarticle">Create Article</Link>
         <Link className="button-link" to="/allarticles">All Articles</Link>
+        <Link className="button-link" to="/uploadcontent">Upload Study Material</Link>
+
         <button className="logout-button" onClick={logout}>Log out</button>
       </div>
     </div>

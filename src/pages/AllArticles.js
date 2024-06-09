@@ -2,29 +2,29 @@ import React, { useEffect, useState } from 'react';
 import '../styles/articlecard.css';
 import { Link } from 'react-router-dom';
 import Spinner from '../components/Spinner';
-import Footer from '../components/Footer';
-import Alert from '../components/Alert';
+// import Footer from '../components/Footer';
+// import Alert from '../components/Alert';
 
 function AllArticles() {
-  const formatDate = (timestamp) => {
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    const date = new Date(timestamp);
-    const day = date.getDate();
-    const month = months[date.getMonth()];
-    const year = date.getFullYear();
-    return `${day} ${month} ${year}`;
-  };
+  // const formatDate = (timestamp) => {
+  //   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  //   const date = new Date(timestamp);
+  //   const day = date.getDate();
+  //   const month = months[date.getMonth()];
+  //   const year = date.getFullYear();
+  //   return `${day} ${month} ${year}`;
+  // };
 
   const compareDates = (a, b) => {
     return new Date(b.date) - new Date(a.date);
   };
-
+  const HOST = process.env.REACT_APP_HOST_NAME;
   const [articles, setArticles] = useState(null);
 
   // TODO : Write function to call api and fetch details
   const fetchData = async () => {
     try {
-      const response = await fetch('https://quiz-app-backend-delta.vercel.app/api/articles', {
+      const response = await fetch(HOST + 'api/articles', {
         method: "GET",
         headers: {
           "Content-Type": "application/json"
@@ -67,7 +67,7 @@ function AllArticles() {
                       <Link to={`/article/${article._id}`} style={{ textDecoration: "none", color: "#000" }}><h5 className="card-title">{article.heading}</h5></Link>
                       <p className="card-text">{article.text}</p>
                       <Link rel="noreferrer" to={`/article/${article._id}`} className="btn btn-sm btn-dark">Read More</Link>
-                      <p className="card-text my-2"><small className="text-muted">By spardhaweb@team on {new Date(article.date).toUTCString()}</small></p>
+                      <p className="card-text my-2"><small className="text-muted">By team@spardhaweb on {new Date(article.date).toUTCString()}</small></p>
                     </div>
                   </div>
                 </div>

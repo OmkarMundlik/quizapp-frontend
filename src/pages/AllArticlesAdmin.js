@@ -5,15 +5,15 @@ import { Link } from 'react-router-dom';
 import ResultContext from '../context/ResultContext';
 
 function AllArticles() {
-    const formatDate = (timestamp) => {
-        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        const date = new Date(timestamp);
-        const day = date.getDate();
-        const month = months[date.getMonth()];
-        const year = date.getFullYear();
-        return `${day} ${month} ${year}`;
-    };
-
+    // const formatDate = (timestamp) => {
+    //     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    //     const date = new Date(timestamp);
+    //     const day = date.getDate();
+    //     const month = months[date.getMonth()];
+    //     const year = date.getFullYear();
+    //     return `${day} ${month} ${year}`;
+    // };
+    const HOST = process.env.REACT_APP_HOST_NAME;
     const compareDates = (a, b) => {
         return new Date(b.date) - new Date(a.date);
     };
@@ -36,7 +36,7 @@ function AllArticles() {
 
     const deleteArticle = async (id) => {
         try {
-            const response = await fetch(`https://quiz-app-backend-delta.vercel.app/api/deletearticle/${id}`, {
+            const response = await fetch(HOST + `api/deletearticle/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ function AllArticles() {
     // TODO : Write function to call api and fetch details
     const fetchData = async () => {
         try {
-            const response = await fetch('https://quiz-app-backend-delta.vercel.app/api/articles', {
+            const response = await fetch(HOST + 'api/articles', {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json"
@@ -126,7 +126,7 @@ function AllArticles() {
                                             <path d="M12 38c0 2.21 1.79 4 4 4h16c2.21 0 4-1.79 4-4V14H12v24zM38 8h-7l-2-2H19l-2 2h-7v4h28V8z"></path>
                                             <path fill="none" d="M0 0h48v48H0z"></path>
                                         </svg>
-                                        <p className="card-text my-2"><small className="text-muted">By {"anonymous"} on {new Date(article.date).toUTCString()}</small></p>
+                                        <p className="card-text my-2"><small className="text-muted">By team@spardhaweb on {new Date(article.date).toUTCString()}</small></p>
                                     </div>
                                 </div>
                             </div>
