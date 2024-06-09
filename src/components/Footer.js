@@ -16,7 +16,7 @@ const Footer = () => {
             <div>
               <a className="btn btn-primary btn-floating m-1" style={{ backgroundColor: "#3b5998" }} href="https://t.me/+BdSatS5bmdE5ODQ1" role="button" target='_blank'><i className="fab fa-telegram"></i></a>
               <a className="btn btn-primary btn-floating m-1" style={{ backgroundColor: "#55acee" }} href="https://www.instagram.com/mpsc_insta?igsh=MWtobmFudjk1OGxndA==" role="button" target="_blank"><i className="fab fa-instagram"></i></a>
-              <a className="btn btn-primary btn-floating m-1" style={{ backgroundColor: "#0082ca" }} href="#!" role="button"><i className="fab fa-whatsapp"></i></a>
+              <a className="btn btn-primary btn-floating m-1" style={{ backgroundColor: "#0082ca" }} href="https://whatsapp.com/channel/0029VacaEMFInlqSAA9ilQ1f" role="button"><i className="fab fa-whatsapp"></i></a>
             </div>
             <div className="mt-4">
               <p>© {new Date().getFullYear()} spardhaweb.com | All rights reserved</p>
