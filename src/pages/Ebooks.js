@@ -5,6 +5,7 @@ import Spinner from '../components/Spinner';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
+
 function Ebooks() {
 
   const compareDates = (a, b) => {
@@ -44,7 +45,7 @@ function Ebooks() {
         <Navbar />
         <br />
         <br />
-        <h1 className="text-center">Current Affairs</h1>
+        <h1 className="text-center">E-books and Study Material</h1>
 
         {!materials ? <Spinner /> :
           <div className="container my-3 flex-grow-1">
@@ -63,8 +64,10 @@ function Ebooks() {
                       <div className="card-body">
                         <h5 className="card-title">{material.headline}</h5>
                         {/* <p className="card-text">{article.text}</p> */}
+                        <a href={material.contentViewUrl}  className="btn btn-sm btn-dark" target="_blank">View PDF</a>
+                        &#160;&#160;&#160;&#160;
                         <a href={material.contentUrl} className="btn btn-sm btn-dark">Download Now</a>
-                        <p className="card-text my-2"><small className="text-muted">By spardhaweb@team on {new Date(material.date).toUTCString()}</small></p>
+                        <p className="card-text my-2"><small className="text-muted">By team@spardhaweb on {new Date(material.date).toUTCString()}</small></p>
                       </div>
                     </div>
                   </div>

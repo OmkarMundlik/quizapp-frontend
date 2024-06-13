@@ -42,6 +42,10 @@ export default function Navbar() {
                             <Link className="nav-link active fs-5 px-3 font-weight-bold" aria-current="page" to="/ebooks"><b>E-Books</b></Link>
                         </li>
                         <li className="nav-item">
+                            <Link className="nav-link active fs-5 px-3 font-weight-bold" aria-current="page" to="/latest-updates"><b>Latest Updates</b></Link>
+
+                        </li>
+                        <li className="nav-item">
                             <Link className="nav-link active fs-5 px-3 font-weight-bold" aria-current="page" to="/about-us"><b>About Us</b></Link>
                         </li>
                         <li className="nav-item">

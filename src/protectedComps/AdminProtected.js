@@ -10,7 +10,7 @@ function AdminProtected(props) {
         let login = localStorage.getItem('admin-token');
 
         if (!login) {
-            console.log("Login with Correct token!!");
+            // console.log("Login with Correct token!!");
             navigate("/adminlogin");
         }
     }, [navigate]); // Include navigate as a dependency

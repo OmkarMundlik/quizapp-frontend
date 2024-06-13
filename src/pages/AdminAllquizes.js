@@ -64,7 +64,7 @@ function AdminAllquizes() {
             });
 
             const { success } = await response.json();
-            console.log(success)
+            // console.log(success)
             let newQuizes = quizes.filter((quiz) => quiz._id !== id);
             setQuizes(newQuizes)
             showAlert('Quiz Deleted Successfully!!!', 'success');

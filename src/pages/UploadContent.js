@@ -12,7 +12,7 @@ function UploadContent() {
         // Construct the direct download link
         const directDownloadLink = `https://drive.google.com/uc?export=download&id=${file_id}`;
 
-        console.log(directDownloadLink)
+        // console.log(directDownloadLink)
         return directDownloadLink;
     };
 
@@ -71,14 +71,15 @@ function UploadContent() {
         setSpinner(true);
         try {
             const imageUrl = await uploadImage(); // Wait for image upload to complete
-            const newContentUrl =  ConvertToDirectDownloadLink({googleDriveLink: contentUrl})
+            const downloadUrl =  ConvertToDirectDownloadLink({googleDriveLink: contentUrl})
             const uploadObj = {
                 headline: headline,
                 imageUrl: imageUrl,
-                contentUrl: newContentUrl
+                contentUrl: downloadUrl, 
+                contentViewUrl: contentUrl
             };
 
-            console.log(uploadObj);
+            // console.log(uploadObj);
 
             const url = HOST + 'api/uploadstudymaterial';
             const response = await fetch(url, {
@@ -95,7 +96,7 @@ function UploadContent() {
             }
             const data = await response.json();
             showAlert('Material Uploaded Successfully!!', 'success');
-            console.log('Article created successfully:', data.message);
+            // console.log('Article created successfully:', data.message);
         } catch (error) {
             showAlert('There was a problem Uploading Material', 'danger');
             // console.log(uploadObj)
@@ -111,7 +112,7 @@ function UploadContent() {
             <div className="container">
                     {/* {alertVisible && alertStatus ?  <Alert message={alertStatus.message} status={alertStatus.status}/> : <></>} */}
                     <div className="header">
-                        <h1>Welcome Admin! Create Today's Quiz.</h1>
+                        <h1>Welcome Admin! Upload Study Material</h1>
                     </div>
                     <div className="row">
                         <div className="col-md-6">

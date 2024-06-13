@@ -7,7 +7,7 @@ import ResultContext from '../context/ResultContext';
 import Spinner from '../components/Spinner';
 
 
-export default function CreateQuiz() {
+export default function CreateLatestUpdate() {
     const navigate = useNavigate();
     const [headline, setHeadline] = useState("");
     const [mainText, setMainText] = useState("");
@@ -15,8 +15,8 @@ export default function CreateQuiz() {
     const [subparts, setSubparts] = useState([]);
     const [spinner, setSpinner] = useState(false);
     const [subpart, setSubpart] = useState({
-        subheading: "",
-        text: ""
+        linkHeadline: "",
+        link: ""
     });
 
     const HOST = process.env.REACT_APP_HOST_NAME;
@@ -36,14 +36,21 @@ export default function CreateQuiz() {
 
 
     const addSubpart = () => {
+        if(subpart.link.length < 7){ 
+            showAlert('Please Add Valid Link', 'danger');
+            return;
+        }
+        if(subpart.linkHeadline.length=="0"){
+            showAlert('Add Headline to link', 'danger');
+            return;
+        }
         const updatedSubparts = subparts;
         updatedSubparts.push(subpart);
         setSubparts(updatedSubparts);
         setSubpart({
-            subheading: "",
-            text: ""
+            linkHeadline: "",
+            link: ""
         })
-        // console.log(subparts);
     }
 
     const renderQuestionList = () => {
@@ -52,8 +59,8 @@ export default function CreateQuiz() {
                 <div className="row g-0">
                     <div className="col-md-8">
                         <div className="card-body">
-                            <h5 className="card-title">{data.subheading}</h5>
-                            <p className="card-text">{data.text}</p>
+                            <h5 className="card-title">{data.linkHeadline}</h5>
+                            <p className="card-text">{data.link}</p>
                         </div>
                     </div>
                 </div>
@@ -61,11 +68,6 @@ export default function CreateQuiz() {
         ));
     };
 
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setAlertVisible(true); 
-    //     }, 3000);
-    // }, [setAlertStatus]); 
 
     const uploadImage = () => {
         return new Promise((resolve, reject) => {
@@ -80,36 +82,46 @@ export default function CreateQuiz() {
             })
                 .then(res => res.json())
                 .then(data => {
-                    showAlert('Image Uploaded SUccessfully', 'success');
+                    showAlert('Image Uploaded Successfully', 'success');
                     resolve(data.url); // Resolve with the image URL
                 })
                 .catch(error => {
-                    showAlert('Error in uploading image!', 'danger');
+                    showAlert('Error in uploading Image', 'danger');
                     reject(error); // Reject with the error if upload fails
                 });
         });
     };
 
-    const CreateArticle = async () => {
+    const UploadLinks = async () => {
+        if (!headline.trim() || !mainText.trim()) {
+            showAlert('Headline and Main Text cannot be empty', 'danger');
+            return;
+        }    
+
+        if(subparts.length < 1){
+            showAlert('Add at least one link!!', 'danger');
+            return;
+        }
+
         setSpinner(true);
         try {
             const imageUrl = await uploadImage(); // Wait for image upload to complete
-            const articleObj = {
-                heading: headline,
-                text: mainText,
-                subparts: subparts,
+            const linksObj = {
+                headline: headline,
+                mainText: mainText,
+                linksArray: subparts,
                 imageUrl: imageUrl
             };
 
-            // console.log(articleObj);
-            const url = HOST + 'api/createarticle';
+            // console.log(linksObj);
+            const url = HOST + 'api/upload-links';
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'admin-token': localStorage.getItem('admin-token')
                 },
-                body: JSON.stringify(articleObj),
+                body: JSON.stringify(linksObj),
             });
 
             if (!response.ok) {
@@ -123,7 +135,7 @@ export default function CreateQuiz() {
             // console.error('There was a problem creating the article:', error.message);
         }
         setSpinner(false);
-        navigate('/allarticles');
+        navigate('/latest-updates');
     };
 
     return (
@@ -132,7 +144,7 @@ export default function CreateQuiz() {
             <div className="container">
                     {/* {alertVisible && alertStatus ?  <Alert message={alertStatus.message} status={alertStatus.status}/> : <></>} */}
                     <div className="header">
-                        <h1>Welcome Admin! Create Today's Quiz.</h1>
+                        <h1>Welcome Admin! Upload Latest Updates.</h1>
                     </div>
                     <div className="row">
                         <div className="col-md-6">
@@ -141,37 +153,37 @@ export default function CreateQuiz() {
                                     <input
                                         type="text"
                                         className="form-control"
-                                        id="subheading"
-                                        name="subheading"
-                                        placeholder="subheading"
-                                        value={subpart.subheading}
+                                        id="linkHeadline"
+                                        name="linkHeadline"
+                                        placeholder="linkHeadline"
+                                        value={subpart.linkHeadline}
                                         onChange={(e) => {
                                             setSubpart({
                                                 ...subpart,
-                                                subheading: e.target.value
+                                                linkHeadline: e.target.value
                                             });
                                         }}
                                     />
-                                    <label htmlFor="headline">Subheading: </label>
+                                    <label htmlFor="headline">Link Headline: </label>
                                 </div>
                                 <div className="form-group mt-3">
-                                    <label htmlFor="mainText">Text: </label>
-                                    <textarea
+                                    <label htmlFor="mainText">Link: </label>
+                                    <input
                                         className="form-control"
                                         id="text"
                                         name="text"
                                         rows="3"
-                                        value={subpart.text}
+                                        value={subpart.link}
                                         onChange={(e) => {
                                             setSubpart({
                                                 ...subpart,
-                                                text: e.target.value
+                                                link: e.target.value
                                             });
                                         }}
-                                    ></textarea>
+                                    />
                                 </div>
                                 <div className="form-group mt-2 d-flex justify-content-center">
-                                    <button type="button" className="btn btn-primary" onClick={addSubpart}>Add Subpart</button>
+                                    <button type="button" className="btn btn-primary" onClick={addSubpart}>Add Link</button>
                                 </div>
                             </form>
                         </div>
@@ -209,7 +221,7 @@ export default function CreateQuiz() {
 
                             <div className="card mt-4">
                                 <div className="card-header">
-                                    <b>All Questions</b>
+                                    <b>All Links</b>
                                 </div>
                                 <ul className="list-group list-group-flush">
                                     {renderQuestionList()}
@@ -218,7 +230,7 @@ export default function CreateQuiz() {
                             {/* {renderQuestionCard()} */}
 
                             <div className="d-flex justify-content-center mt-3">
-                                <button type="button" className="btn btn-primary" onClick={CreateArticle}>Create Quiz</button>
+                                <button type="button" className="btn btn-primary" onClick={UploadLinks}>Upload Links</button>
                             </div>
                         </div>
                     </div>

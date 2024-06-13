@@ -34,6 +34,7 @@ function AdminPage() {
         <Link className="button-link" to="/createarticle">Create Article</Link>
         <Link className="button-link" to="/allarticles">All Articles</Link>
         <Link className="button-link" to="/uploadcontent">Upload Study Material</Link>
+        <Link className="button-link" to="/create-updates">Upload Latest Updates</Link>
 
         <button className="logout-button" onClick={logout}>Log out</button>
       </div>

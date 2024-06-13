@@ -18,6 +18,8 @@ export default function Hero() {
                     <Link className="btn btn-primary btn-lg px-4 gap-3" to="/allquizes" role="button" >Test Series</Link>
                     <Link className="btn btn-primary btn-lg px-4 gap-3" to="/articles" role="button">Current Affairs 2024</Link>
                     <Link className="btn btn-primary btn-lg px-4 gap-3" to="/ebooks" role="button">Study Material</Link>
+                    <Link className="btn btn-primary btn-lg px-4 gap-3" to="/latest-updates" role="button">Latest Updates</Link>
+
                 </div>
             </div>
         </div>

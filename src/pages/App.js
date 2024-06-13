@@ -25,6 +25,9 @@ import AboutUs from './AboutUs';
 import ContactUs from './ContactUs';
 import TermsConditions from './TermsConditions';
 import PrivacyPolicy from './PrivacyPolicy';
+import LatestUpdates from './LatestUpdates';
+import LatestUpdate from './LatestUpdate';
+import CreateLatestUpdate from './CreateLatestUpdate';
 
 function App() {
   const router = createBrowserRouter([
@@ -96,6 +99,18 @@ function App() {
     {
       path: "/privacy-policy",
       element: <PrivacyPolicy />
+    }, 
+    {
+      path: "/latest-updates",
+      element: <LatestUpdates />
+    },
+    {
+      path:"/latest-update/:updateId",
+      element: <LatestUpdate />
+    },
+    {
+      path: "/create-updates",
+      element: <AdminProtected Component={CreateLatestUpdate}/>
     }
   ]);
 

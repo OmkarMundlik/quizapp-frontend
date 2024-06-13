@@ -8,7 +8,7 @@ function AdminLogin() {
     const [password, setPassword] = useState("");
     const {alertContext, setAlertContext} = useContext(ResultContext);
     const HOST = process.env.REACT_APP_HOST_NAME;
-    console.log(HOST)
+    // console.log(HOST)
     // useEffect(() => {
     //     if (alertContext.isActive) {
     //       const timeout = setTimeout(() => {
