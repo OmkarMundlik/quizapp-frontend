@@ -64,11 +64,11 @@ function LatestUpdates() {
                       </div>
                       <img src={!update.imageUrl ? "https://t4.ftcdn.net/jpg/05/81/84/71/360_F_581847176_eF540XqFGHDdGPZxyh5NtWHNzgs0XFk6.jpg" : update.imageUrl} className="card-img-top" alt="..." />
                       <div className="card-body">
-                        <Link to={`/article/${update._id}`} style={{ textDecoration: "none", color: "#000" }}><h5 className="card-title">{update.headline}</h5></Link>
+                        <Link to={`/latest-update/${update._id}`} style={{ textDecoration: "none", color: "#000" }}><h5 className="card-title">{update.headline}</h5></Link>
                         <p className="card-text">
                           {update.mainText.length <= 50 ? update.mainText : update.mainText.substring(0, 50) + "..."}
                         </p>
-                        <Link to={`/latest-update/${update._id}`} className="btn btn-sm btn-dark">Read More</Link>
+                        <Link to={`/latest-update/${update._id}`} className="btn btn-sm btn-dark">Go To Link</Link>
                         <p className="card-text my-2"><small className="text-muted">By team@spardhaweb on {new Date(update.date).toUTCString()}</small></p>
                       </div>
                     </div>
