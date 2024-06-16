@@ -7,6 +7,7 @@ import ArticleMain from './ArticleMain'
 import AllArticles from './AllArticles'
 import Spinner from '../components/Spinner'
 import AboutUs from './AboutUs'
+import SubHero from '../components/SubHero'
 
 export default function Main() {
   const hostname = process.env.HOST;
@@ -14,10 +15,8 @@ export default function Main() {
     <div>
         <Navbar />
         <Hero />
-
-        {/* <AboutUs /> */}
+        <SubHero />
         <Footer />
-        
 
     </div>
   )

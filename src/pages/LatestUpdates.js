@@ -26,9 +26,7 @@ function LatestUpdates() {
       if (!response.ok) {
         throw new Error('Failed to fetch quizzes');
       }
-      const jsonData = await response.json();
-      const data = jsonData["data"]
-      // Sort the quizzes based on date in descending order
+      const data = await response.json();
       const sortedUpdates = data.sort(compareDates);
       setAllUpdates(sortedUpdates);
     } catch (error) {
