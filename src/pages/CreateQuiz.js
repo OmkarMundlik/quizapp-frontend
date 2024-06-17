@@ -11,17 +11,19 @@ export default function CreateQuiz() {
     const navigate = useNavigate();
     const [subject, setSubject] = useState("");
     const [quizData, setQuizData] = useState([]);
+    const [mainImg, setMainImg] = useState(null);
+
     const [formData, setFormData] = useState({
         question: '',
         options: ['', '', '', ''],
         answer: '1',
         description: ''
     });
-    const {setAlertContext} = useContext(ResultContext);
-    const showAlert = (message, status)=>{
+    const { setAlertContext } = useContext(ResultContext);
+    const showAlert = (message, status) => {
         setAlertContext({
             isActive: true,
-            message: message, 
+            message: message,
             status: status
         })
         setTimeout(() => {
@@ -62,11 +64,36 @@ export default function CreateQuiz() {
             </li>
         ));
     };
-    
+
+    const uploadImage = () => {
+        return new Promise((resolve, reject) => {
+            const data = new FormData();
+            data.append("file", mainImg);
+            data.append("upload_preset", "vmyf3te9");
+            data.append("cloud_name", "dpktfyhbi");
+
+            fetch("https://api.cloudinary.com/v1_1/dpktfyhbi/image/upload", {
+                method: "post",
+                body: data
+            })
+                .then(res => res.json())
+                .then(data => {
+                    showAlert('Image Uploaded SUccessfully', 'success');
+                    resolve(data.url); // Resolve with the image URL
+                })
+                .catch(error => {
+                    showAlert('Error in uploading image!', 'danger');
+                    reject(error); // Reject with the error if upload fails
+                });
+        });
+    };
+
     const CreateQuiz = async () => {
+        const imageUrl = await uploadImage();
         const quizObj = {
             subject: subject,
-            questions: quizData
+            questions: quizData,
+            imageUrl: imageUrl
         };
         const url = HOST + 'api/createquiz'
         // const url = 'http://localhost:8000/api/createquiz'
@@ -74,7 +101,7 @@ export default function CreateQuiz() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'admin-token':localStorage.getItem('admin-token')
+                'admin-token': localStorage.getItem('admin-token')
             },
             body: JSON.stringify(quizObj),
         })
@@ -200,6 +227,9 @@ export default function CreateQuiz() {
                         />
                         <label htmlFor="subject">Subject</label>
                     </div>
+                    <label htmlFor="" style={{ marginBottom: "10px" }}>Select Image</label>
+                    <br />
+                    <input type="file" onChange={(e) => { setMainImg(e.target.files[0]) }} accept="image/*" />
                     <div className="card mt-4">
                         <div className="card-header">
                             <b>All Questions</b>

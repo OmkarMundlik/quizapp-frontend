@@ -17,7 +17,6 @@ export default function Main() {
         <Hero />
         <SubHero />
         <Footer />
-
     </div>
   )
 }
