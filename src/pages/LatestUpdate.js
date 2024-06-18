@@ -49,29 +49,37 @@ export default function LatestUpdate(props) {
 
 
   const navigate = useNavigate();
-
+  // const text_lines = updateData.mainText.split('<br>');
   return (
     <>
-    <Navbar />
+      <Navbar />
       {!updateData ? <Spinner /> : <>
         <div className="article-main-container">
           <div className="image-with-text-container">
             <img src={updateData.imageUrl} alt="Image" className="image" />
             <p className='articleDate'>{formatDate(updateData.date)}</p>
             <h1 className="heading">{updateData.headline}</h1>
-            <p className="text">{updateData.mainText}</p>
+            <p className="text">
+              {updateData.mainText.split('<br>').map((line, index) => (
+                // Render each line with a <br> tag
+                <React.Fragment key={index}>
+                  {line}
+                  <br />
+                </React.Fragment>
+              ))}
+            </p>
             <div className="table-responsive">
-            <table className="table table-bordered">
-              <tbody>
-                {updateData.linksArray.map((link, index) => (
-                  <tr key={index}>
-                    <td>{link.linkHeadline}</td>
-                    <td><a href={link.link} target="_blank" rel="noopener noreferrer">{link.link}</a></td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+              <table className="table table-bordered">
+                <tbody>
+                  {updateData.linksArray.map((link, index) => (
+                    <tr key={index}>
+                      <td>{link.linkHeadline}</td>
+                      <td><a href={link.link} target="_blank" rel="noopener noreferrer">{link.link}</a></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
         {/* <div className="container">
