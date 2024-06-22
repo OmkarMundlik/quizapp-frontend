@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Spinner from '../components/Spinner';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Categories from '../components/Categories';
 
 
 function Ebooks() {
@@ -77,6 +78,7 @@ function Ebooks() {
           </div>
         }
       </div>
+      <Categories />
       <div className="flex-grow-1">
         <Footer />
       </div>

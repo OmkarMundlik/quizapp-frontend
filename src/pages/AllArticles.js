@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../styles/articlecard.css';
 import { Link } from 'react-router-dom';
 import Spinner from '../components/Spinner';
+import Categories from '../components/Categories';
 // import Footer from '../components/Footer';
 // import Alert from '../components/Alert';
 

@@ -138,31 +138,6 @@ function SubHero() {
             }
 
             <h1 className="text-center mt-4 mb-5">Test Series 2024</h1>
-            {/* <div className="container">
-                <div className="row justify-content-center">
-                    {!quizes ? <Spinner /> : quizes.map((quiz, index) => (
-                        <div key={index} className="col-md-4 mb-4">
-                            <div className="card h-100">
-                                <div className="card-body">
-                                    <h5 className="card-title">Date: {formatDate(quiz.date)}</h5>
-                                    <p className="card-text">Subject: {quiz.subject}</p>
-                                    <Link to={`/start/${quiz._id}`} className="btn btn-primary">Start Quiz</Link>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                    <div key="viewall" className="col-md-4 mb-4">
-                        <div className="card h-100">
-                            <Link to="/allquizes">
-                                <div className="card-body">
-                                    <h5 className="card-title">View All Quizes</h5>
-                                </div>
-                            </Link>
-                        </div>
-                    </div>
-
-                </div>
-            </div> */}
              {!quizes ? <Spinner /> :
                 <div className="container my-3 flex-grow-1">
                     <div className="row">
@@ -182,6 +157,7 @@ function SubHero() {
                                     </div>
                                 </div>
                             </div>
+                            // <HorizonTextCard quiz={quiz}/>
                         ))}
 
                         {quizes.length > 0 && (
@@ -199,7 +175,6 @@ function SubHero() {
                                     </Link>
                                 </div>
                             </div>
-
                         )}
 
                     </div>

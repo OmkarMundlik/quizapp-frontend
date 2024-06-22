@@ -8,15 +8,16 @@ import AllArticles from './AllArticles'
 import Spinner from '../components/Spinner'
 import AboutUs from './AboutUs'
 import SubHero from '../components/SubHero'
+import { Link } from 'react-router-dom'
 
 export default function Main() {
   const hostname = process.env.HOST;
   return (
     <div>
-        <Navbar />
-        <Hero />
-        <SubHero />
-        <Footer />
+      <Navbar />
+      <Hero />
+      <SubHero />
+      <Footer />
     </div>
   )
 }

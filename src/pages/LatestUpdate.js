@@ -7,6 +7,7 @@ import Spinner from '../components/Spinner';
 import '../styles/ArticleMain.css';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Categories from '../components/Categories';
 
 
 
@@ -101,6 +102,7 @@ export default function LatestUpdate(props) {
         </div> */}
 
       </>}
+      <Categories />
       <Footer />
     </>
   );

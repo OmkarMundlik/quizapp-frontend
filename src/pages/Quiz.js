@@ -4,6 +4,7 @@ import '../styles/Quiz.css'
 import ResultContext from '../context/ResultContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import Spinner from '../components/Spinner';
+import Navbar from '../components/Navbar';
 
 
 export default function Quiz(props) {
@@ -79,6 +80,7 @@ export default function Quiz(props) {
     }
     return (
         <>
+        <Navbar />
         {!quizData ? <Spinner /> : <>
             <h1>Daily Quiz : {formatDate(quizData.date)}</h1>
             <h3 style={{ textAlign: "center" }}>Subject : {quizData.subject}</h3>

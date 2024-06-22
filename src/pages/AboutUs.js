@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Categories from '../components/Categories';
 
 const AboutUs = () => {
   return (
@@ -16,6 +17,7 @@ const AboutUs = () => {
           <p className="text-center"><span style={{ color: 'blue', fontSize: '16px', fontWeight: 'bold' }}>Have a great day !</span></p>
         </div>
       </div>
+      <Categories />
       <Footer />
     </div>
   );
