@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 function Categories() {
     const categories = [
-        { id: 1, name: 'Current Affairs', link: '/articles', imageUrl: "https://res.cloudinary.com/dpktfyhbi/image/upload/v1718529415/viewmore_xsmil0.jpg" },
-        { id: 2, name: 'Latest Updates', link: '/latest-updates', imageUrl: "https://res.cloudinary.com/dpktfyhbi/image/upload/v1718529415/viewmore_xsmil0.jpg" },
-        { id: 3, name: 'Study Material', link: '/ebooks', imageUrl: "https://res.cloudinary.com/dpktfyhbi/image/upload/v1718558408/testkg_ttyz5t.jpg" },
-        { id: 4, name: 'Free Mock Tests', link: '/allquizes', imageUrl: "https://res.cloudinary.com/dpktfyhbi/image/upload/v1718529415/viewmore_xsmil0.jpg" }
+        { id: 1, name: 'Current Affairs', link: '/articles', imageUrl: "https://res.cloudinary.com/dzpazaufa/image/upload/v1720804925/dailycurrafair_uga0y3.jpg" },
+        { id: 2, name: 'Latest Updates', link: '/latest-updates', imageUrl: "https://res.cloudinary.com/dzpazaufa/image/upload/v1720804964/latest_updates_aq4tlu.jpg" },
+        { id: 3, name: 'Study Material', link: '/ebooks', imageUrl: "https://res.cloudinary.com/dzpazaufa/image/upload/v1720805005/studymaterial_jervxl.jpg" },
+        { id: 4, name: 'Free Mock Tests', link: '/allquizes', imageUrl: "https://res.cloudinary.com/dzpazaufa/image/upload/v1720805005/test_series_y3kecu.jpg" }
     ];
 
     return (

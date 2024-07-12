@@ -101,7 +101,8 @@ function SubHero() {
                                         <div style={{ display: 'flex', justifyContent: 'flex-end', position: 'absolute', right: 0, padding: '2px' }}
                                         >
                                         </div>
-                                        <img src={!update.imageUrl ? "https://t4.ftcdn.net/jpg/05/81/84/71/360_F_581847176_eF540XqFGHDdGPZxyh5NtWHNzgs0XFk6.jpg" : update.imageUrl} className="card-img-top" alt="..." />
+                                        {/* <img src={!update.imageUrl ? "https://t4.ftcdn.net/jpg/05/81/84/71/360_F_581847176_eF540XqFGHDdGPZxyh5NtWHNzgs0XFk6.jpg" : update.imageUrl} className="card-img-top" alt="..." /> */}
+                                        <img src="https://res.cloudinary.com/dzpazaufa/image/upload/v1720804964/latest_updates_aq4tlu.jpg" className="card-img-top" alt="..." />
                                         <div className="card-body">
                                             <Link to={`/latest-update/${update._id}`} style={{ textDecoration: "none", color: "#000" }}><h5 className="card-title">{update.headline}</h5></Link>
                                             <p className="card-text">
@@ -123,7 +124,7 @@ function SubHero() {
                                         <div className="card">
                                             <div style={{ display: 'flex', justifyContent: 'flex-end', position: 'absolute', right: 0, padding: '2px' }}>
                                             </div>
-                                            <img src="https://res.cloudinary.com/dpktfyhbi/image/upload/v1718529415/viewmore_xsmil0.jpg" className="card-img-top" alt="..." />
+                                            <img src="https://res.cloudinary.com/dzpazaufa/image/upload/v1720804964/latest_updates_aq4tlu.jpg" className="card-img-top" alt="..." />
                                             <div className="card-body">
                                                 <h3 className=" btn btn-sm btn-dark m-auto p-3">View More</h3>
                                             </div>
@@ -147,7 +148,8 @@ function SubHero() {
                                     <div className="card">
                                         <div style={{ display: 'flex', justifyContent: 'flex-end', position: 'absolute', right: 0, padding: '2px' }}>
                                         </div>
-                                        <img src={!quiz.imageUrl ? "https://res.cloudinary.com/dpktfyhbi/image/upload/v1718558408/testkg_ttyz5t.jpg" : quiz.imageUrl} className="card-img-top" alt="..." />
+                                        {/* <img src={!quiz.imageUrl ? "https://res.cloudinary.com/dpktfyhbi/image/upload/v1718558408/testkg_ttyz5t.jpg" : quiz.imageUrl} className="card-img-top" alt="..." /> */}
+                                        <img src="https://res.cloudinary.com/dzpazaufa/image/upload/v1720805005/test_series_y3kecu.jpg" className="card-img-top" alt="..." />
                                         <div className="card-body">
                                             <h5 className="card-title">Date: {formatDate(quiz.date)}</h5>
                                             <h5 className="card-title">Subject: {quiz.subject}</h5>
@@ -167,7 +169,7 @@ function SubHero() {
                                         <div className="card">
                                             <div style={{ display: 'flex', justifyContent: 'flex-end', position: 'absolute', right: 0, padding: '2px' }}>
                                             </div>
-                                            <img src="https://res.cloudinary.com/dpktfyhbi/image/upload/v1718558408/testkg_ttyz5t.jpg" className="card-img-top" alt="..." />
+                                            <img src="https://res.cloudinary.com/dzpazaufa/image/upload/v1720805005/test_series_y3kecu.jpg" className="card-img-top" alt="..." />
                                             <div className="card-body">
                                                 <h3 className=" btn btn-sm btn-dark m-auto p-3">View More</h3>
                                             </div>
@@ -189,7 +191,8 @@ function SubHero() {
                             <div className="col-md-4" key={article._id}>
                                 <div className="my-3">
                                     <div className="card">
-                                        <img src={!article.imageUrl ? "https://t4.ftcdn.net/jpg/05/81/84/71/360_F_581847176_eF540XqFGHDdGPZxyh5NtWHNzgs0XFk6.jpg" : article.imageUrl} className="card-img-top" alt="..." />
+                                        {/* <img src={!article.imageUrl ? "https://t4.ftcdn.net/jpg/05/81/84/71/360_F_581847176_eF540XqFGHDdGPZxyh5NtWHNzgs0XFk6.jpg" : article.imageUrl} className="card-img-top" alt="..." /> */}
+                                        <img src="https://res.cloudinary.com/dzpazaufa/image/upload/v1720804925/dailycurrafair_uga0y3.jpg" className="card-img-top" alt="..." />
                                         <div className="card-body">
                                             <Link to={`/article/${article._id}`} style={{ textDecoration: "none", color: "#000" }}><h5 className="card-title">{article.heading}</h5></Link>
                                             <p className="card-text">{article.text}</p>
@@ -207,7 +210,7 @@ function SubHero() {
                                         <div className="card">
                                             <div style={{ display: 'flex', justifyContent: 'flex-end', position: 'absolute', right: 0, padding: '2px' }}>
                                             </div>
-                                            <img src="https://res.cloudinary.com/dpktfyhbi/image/upload/v1718557441/viewall_lbwnki.jpg" className="card-img-top" alt="..." />
+                                            <img src="https://res.cloudinary.com/dzpazaufa/image/upload/v1720804925/dailycurrafair_uga0y3.jpg" className="card-img-top" alt="..." />
                                             <div className="card-body">
                                                 <h3 className=" btn btn-sm btn-dark m-auto p-3">View More</h3>
                                             </div>
@@ -230,7 +233,8 @@ function SubHero() {
                                     <div className="card">
                                         <div style={{ display: 'flex', justifyContent: 'flex-end', position: 'absolute', right: 0, padding: '2px' }}>
                                         </div>
-                                        <img src={!material.imageUrl ? "https://t4.ftcdn.net/jpg/05/81/84/71/360_F_581847176_eF540XqFGHDdGPZxyh5NtWHNzgs0XFk6.jpg" : material.imageUrl} className="card-img-top" alt="..." />
+                                        {/* <img src={!material.imageUrl ? "https://t4.ftcdn.net/jpg/05/81/84/71/360_F_581847176_eF540XqFGHDdGPZxyh5NtWHNzgs0XFk6.jpg" : material.imageUrl} className="card-img-top" alt="..." /> */}
+                                        <img src="https://res.cloudinary.com/dzpazaufa/image/upload/v1720805005/studymaterial_jervxl.jpg" className="card-img-top" alt="..." />
                                         <div className="card-body">
                                             <h5 className="card-title">{material.headline}</h5>
                                             <a href={material.contentViewUrl} className="btn btn-sm btn-dark" target="_blank">View PDF</a>
@@ -250,7 +254,7 @@ function SubHero() {
                                         <div className="card">
                                             <div style={{ display: 'flex', justifyContent: 'flex-end', position: 'absolute', right: 0, padding: '2px' }}>
                                             </div>
-                                            <img src="https://res.cloudinary.com/dpktfyhbi/image/upload/v1718529415/viewmore_xsmil0.jpg" className="card-img-top" alt="..." />
+                                            <img src="https://res.cloudinary.com/dzpazaufa/image/upload/v1720805005/studymaterial_jervxl.jpg" className="card-img-top" alt="..." />
                                             <div className="card-body">
                                                 <h3 className=" btn btn-sm btn-dark m-auto p-3">View More</h3>
                                             </div>
