@@ -61,7 +61,8 @@ function LatestUpdates() {
                         <span className="visually-hidden">unread messages</span>
                       </span> */}
                       </div>
-                      <img src={!update.imageUrl ? "https://t4.ftcdn.net/jpg/05/81/84/71/360_F_581847176_eF540XqFGHDdGPZxyh5NtWHNzgs0XFk6.jpg" : update.imageUrl} className="card-img-top" alt="..." />
+                      {/* <img src={!update.imageUrl ? "https://t4.ftcdn.net/jpg/05/81/84/71/360_F_581847176_eF540XqFGHDdGPZxyh5NtWHNzgs0XFk6.jpg" : update.imageUrl} className="card-img-top" alt="..." /> */}
+                      <img src="https://res.cloudinary.com/dzpazaufa/image/upload/v1720804964/latest_updates_aq4tlu.jpg" className="card-img-top" alt="..." />
                       <div className="card-body">
                         <Link to={`/latest-update/${update._id}`} style={{ textDecoration: "none", color: "#000" }}><h5 className="card-title">{update.headline}</h5></Link>
                         <p className="card-text">

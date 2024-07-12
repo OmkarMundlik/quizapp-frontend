@@ -22,7 +22,7 @@ export default function QuizesPage(props) {
 
   const [quizes, setQuizes] = useState(null);
   const fetchData = async () => {
-    try {
+    try {    
       const response = await fetch(HOST + 'api/getallquizes', {
         method: "GET",
         headers: {
@@ -60,7 +60,8 @@ export default function QuizesPage(props) {
                   <div className="card">
                     <div style={{ display: 'flex', justifyContent: 'flex-end', position: 'absolute', right: 0, padding: '2px' }}>
                     </div>
-                    <img src={!quiz.imageUrl ? "https://res.cloudinary.com/dpktfyhbi/image/upload/v1718558408/testkg_ttyz5t.jpg" : quiz.imageUrl} className="card-img-top" alt="..." />
+                    {/* <img src={!quiz.imageUrl ? "https://res.cloudinary.com/dpktfyhbi/image/upload/v1718558408/testkg_ttyz5t.jpg" : quiz.imageUrl} className="card-img-top" alt="..." /> */}
+                    <img src="https://res.cloudinary.com/dzpazaufa/image/upload/v1720805005/test_series_y3kecu.jpg" className="card-img-top" alt="..." />
                     <div className="card-body">
                       <h5 className="card-title">Date: {formatDate(quiz.date)}</h5>
                       <h5 className="card-title">Subject: {quiz.subject}</h5>

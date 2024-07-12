@@ -61,7 +61,8 @@ function Ebooks() {
                           <span className="visually-hidden">unread messages</span>
                         </span> */}
                       </div>
-                      <img src={!material.imageUrl ? "https://t4.ftcdn.net/jpg/05/81/84/71/360_F_581847176_eF540XqFGHDdGPZxyh5NtWHNzgs0XFk6.jpg" : material.imageUrl} className="card-img-top" alt="..." />
+                      {/* <img src={!material.imageUrl ? "https://t4.ftcdn.net/jpg/05/81/84/71/360_F_581847176_eF540XqFGHDdGPZxyh5NtWHNzgs0XFk6.jpg" : material.imageUrl} className="card-img-top" alt="..." /> */}
+                      <img src="https://res.cloudinary.com/dzpazaufa/image/upload/v1720805005/studymaterial_jervxl.jpg" className="card-img-top" alt="..." />
                       <div className="card-body">
                         <h5 className="card-title">{material.headline}</h5>
                         {/* <p className="card-text">{article.text}</p> */}
