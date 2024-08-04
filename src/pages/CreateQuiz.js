@@ -393,7 +393,7 @@ export default function CreateQuiz() {
                     currentQuestion.question = questionText.trim();
                     questions.push(currentQuestion);
                 }
-                currentQuestion = { question: "", options: [], correct_option: "", description: "" };
+                currentQuestion = { question: "", options: [], answer: "", description: "" };
                 questionText = questionMatch[1];
             } else if (currentQuestion) {
                 const optionMatch = line.match(/^([A-D])\. (.*)/);
@@ -401,7 +401,7 @@ export default function CreateQuiz() {
                     let optionText = optionMatch[2].replace(' √', '').replace('√', '').replace('√√', '').trim();
                     currentQuestion.options.push(optionText);
                     if (line.includes('√')) {
-                        currentQuestion.correct_option = (optionMatch[1].charCodeAt(0) - 'A'.charCodeAt(0) + 1).toString();
+                        currentQuestion.answer = (optionMatch[1].charCodeAt(0) - 'A'.charCodeAt(0) + 1).toString();
                     }
                 } else {
                     questionText += ' ' + line.trim();
@@ -448,7 +448,7 @@ export default function CreateQuiz() {
 
     const handleCorrectOptionChange = (questionIndex, value) => {
         const updatedQuiz = { ...quizJson };
-        updatedQuiz.questions[questionIndex].correct_option = value;
+        updatedQuiz.questions[questionIndex].answer = value;
         setQuizJson(updatedQuiz);
     }
 
@@ -525,7 +525,7 @@ export default function CreateQuiz() {
                             ))}
                             <label>Correct Option:</label>
                             <select
-                                value={question.correct_option}
+                                value={question.answer}
                                 onChange={(e) => handleCorrectOptionChange(qIndex, e.target.value)}
                             >
                                 {question.options.map((_, oIndex) => (

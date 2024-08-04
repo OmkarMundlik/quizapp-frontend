@@ -8,6 +8,7 @@ import Navbar from '../components/Navbar';
 
 
 export default function Quiz(props) {
+    
     const formatDate = (timestamp) => {
         const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         const date = new Date(timestamp);
@@ -16,6 +17,7 @@ export default function Quiz(props) {
         const year = date.getFullYear();
         return `${day} ${month} ${year}`;
       };
+    
     const HOST = process.env.REACT_APP_HOST_NAME;
     const {quizId} = useParams();
     const [id, setId] = useState(quizId);
@@ -37,6 +39,7 @@ export default function Quiz(props) {
             console.error('Error fetching quizzes:', error);
           }
     }
+
     const { score, setScore, responses, setResponses } = useContext(ResultContext);
     const [localResponse, setlocalResponse] = useState([]);
 

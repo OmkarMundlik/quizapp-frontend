@@ -88,7 +88,8 @@ export default function Result() {
                                 <Link to={`/start/${quiz._id}`} key={quiz._id} className="text-decoration-none">
                                     <li className="list-group-item d-flex justify-content-between align-items-center my-2 p-3">
                                         <div className="d-flex align-items-center">
-                                            <img src={!quiz.imageUrl ? "https://res.cloudinary.com/dpktfyhbi/image/upload/v1718558408/testkg_ttyz5t.jpg" : quiz.imageUrl} alt="" height="65px" width="100px" className="me-3" />
+                                            {/* <img src={!quiz.imageUrl ? "https://res.cloudinary.com/dzpazaufa/image/upload/v1720805005/test_series_y3kecu.jpg" : quiz.imageUrl} alt="" height="65px" width="100px" className="me-3" /> */}
+                                            <img src="https://res.cloudinary.com/dzpazaufa/image/upload/v1720805005/test_series_y3kecu.jpg" alt="" height="65px" width="100px" className="me-3" />
                                             <div>
                                                 <strong>{quiz.subject}</strong><br />
                                                 <strong>{formatDate(quiz.date)}</strong>
