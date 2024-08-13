@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Spinner from './Spinner';
 import { Link } from 'react-router-dom';
+import InfeedAd from './InfeedAd';
 
 function SubHero() {
     const formatDate = (timestamp) => {
@@ -137,7 +138,7 @@ function SubHero() {
                     </div>
                 </div>
             }
-
+            <InfeedAd />
             <h1 className="text-center mt-4 mb-5">Test Series 2024</h1>
              {!quizes ? <Spinner /> :
                 <div className="container my-3 flex-grow-1">
@@ -182,7 +183,7 @@ function SubHero() {
                     </div>
                 </div>
             }
-
+            <InfeedAd />
             <h1 className="text-center mt-4 mb-5">Current Affairs</h1>
             {!articles ? <Spinner /> :
                 <div className="container">
@@ -222,7 +223,7 @@ function SubHero() {
                     </div>
                 </div>
             }
-
+            <InfeedAd />
             <h1 className="text-center mt-4 mb-5">E-books and Study Material</h1>
             {!studyMaterial ? <Spinner /> :
                 <div className="container my-3 flex-grow-1">
