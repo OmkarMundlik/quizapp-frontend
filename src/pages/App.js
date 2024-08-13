@@ -11,12 +11,9 @@ import AdminProtected from '../protectedComps/AdminProtected';
 import AdminPage from './AdminPage';
 import AdminAllquizes from './AdminAllquizes';
 import ArticleMain from './ArticleMain';
-import AllArticles from './AllArticles';
 import CreateArticle from './CreateArticle'
 import AllArticlesAdmin from './AllArticlesAdmin'
 import AllArticlesPage from './AllArticlesPage';
-import { useContext } from 'react';
-import ResultContext from '../context/ResultContext';
 
 import Alert from '../components/Alert';
 import Ebooks from './Ebooks';
@@ -28,6 +25,8 @@ import PrivacyPolicy from './PrivacyPolicy';
 import LatestUpdates from './LatestUpdates';
 import LatestUpdate from './LatestUpdate';
 import CreateLatestUpdate from './CreateLatestUpdate';
+import Dashboard from './Dashboard';
+import Error from '../components/Error';
 
 function App() {
   const router = createBrowserRouter([
@@ -111,6 +110,14 @@ function App() {
     {
       path: "/create-updates",
       element: <AdminProtected Component={CreateLatestUpdate}/>
+    },
+    {
+      path: "dashboard",
+      element: <Dashboard />
+    },
+    {
+      path: "*",
+      element: <Error />,
     }
   ]);
 

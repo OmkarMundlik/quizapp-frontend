@@ -5,6 +5,7 @@ import ResultContext from '../context/ResultContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import Spinner from '../components/Spinner';
 import Navbar from '../components/Navbar';
+import InfeedAd from '../components/InfeedAd'
 
 
 export default function Quiz(props) {
@@ -81,23 +82,27 @@ export default function Quiz(props) {
         setResponses(localResponse);
         navigate('/result');
     }
+    const midIndex = quizData ? Math.ceil(quizData.questions.length / 2) : 0;
+
     return (
         <>
-        <Navbar />
-        {!quizData ? <Spinner /> : <>
-            <h1>Daily Quiz : {formatDate(quizData.date)}</h1>
-            <h3 style={{ textAlign: "center" }}>Subject : {quizData.subject}</h3>
-            <div className="quiz-container">
-                { quizData.questions.map((question, id) => (
-                    <div key={id}>
-                        <Question question={question} onAnswerSelected={handleAnswerSelected} id={id} />
+            <Navbar />
+            {!quizData ? <Spinner /> : <>
+                <h1>Daily Quiz : {formatDate(quizData.date)}</h1>
+                <h3 style={{ textAlign: "center" }}>Subject : {quizData.subject}</h3>
+                <div className="quiz-container">
+                    {quizData.questions.map((question, id) => (
+                        <React.Fragment key={id}>
+                            <Question question={question} onAnswerSelected={handleAnswerSelected} id={id} />
+                            {id === midIndex - 1 && <InfeedAd />}
+                        </React.Fragment>
+                    ))}
+                    <div className="center-container">
+                        <button className='btn btn-primary' onClick={onSubmit} style={{}}>Submit Responses</button>
                     </div>
-                ))}
-                <div className="center-container">
-                    <button className='btn btn-primary' onClick={onSubmit} style={{}}>Submit Responses</button>
                 </div>
-            </div>
-        </>}
+            </>}
         </>
     );
+
 }

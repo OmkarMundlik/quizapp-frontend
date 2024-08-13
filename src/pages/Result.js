@@ -6,6 +6,7 @@ import '../styles/Result.css';
 import Spinner from '../components/Spinner';
 import Categories from '../components/Categories';
 import Navbar from '../components/Navbar';
+import InfeedAd from '../components/InfeedAd'
 
 export default function Result() {
     const formatDate = (timestamp) => {
@@ -59,10 +60,11 @@ export default function Result() {
     if (!quizData || responses.length === 0) {
         return <div className="center-container">Start a Quiz First!!</div>;
     }
+    const midIndex = quizData ? Math.ceil(quizData.questions.length / 2) : 0;
 
     return (
         <>
-        <Navbar />
+            <Navbar />
             <div className="result-container">
                 <h1 className="result-heading">Quiz Result</h1>
                 <div className="score-container">
@@ -70,43 +72,41 @@ export default function Result() {
                 </div>
                 <div className="quiz-container">
                     {quizData.questions.map((question, id) => (
-                        <div key={id} className="question-container">
-                            <Answer
-                                question={question}
-                                id={id}
-                                selected={responses[id]}
-                                answer={quizData.questions[id].answer}
-                            />
-                        </div>
+                        <React.Fragment key={id}>
+                            <div className="question-container">
+                                <Answer
+                                    question={question}
+                                    id={id}
+                                    selected={responses[id]}
+                                    answer={quizData.questions[id].answer}
+                                />
+                            </div>
+                            {id === midIndex - 1 && <InfeedAd />}
+                        </React.Fragment>
                     ))}
                 </div>
                 <h1 className="text-center">See More Tests</h1>
                 {!quizes ? <Spinner /> :
                     <ul className="list-group">
                         {quizes.slice(0, 7).map(quiz => (
-                            <>
-                                <Link to={`/start/${quiz._id}`} key={quiz._id} className="text-decoration-none">
-                                    <li className="list-group-item d-flex justify-content-between align-items-center my-2 p-3">
-                                        <div className="d-flex align-items-center">
-                                            {/* <img src={!quiz.imageUrl ? "https://res.cloudinary.com/dzpazaufa/image/upload/v1720805005/test_series_y3kecu.jpg" : quiz.imageUrl} alt="" height="65px" width="100px" className="me-3" /> */}
-                                            <img src="https://res.cloudinary.com/dzpazaufa/image/upload/v1720805005/test_series_y3kecu.jpg" alt="" height="65px" width="100px" className="me-3" />
-                                            <div>
-                                                <strong>{quiz.subject}</strong><br />
-                                                <strong>{formatDate(quiz.date)}</strong>
-                                            </div>
+                            <Link to={`/start/${quiz._id}`} key={quiz._id} className="text-decoration-none">
+                                <li className="list-group-item d-flex justify-content-between align-items-center my-2 p-3">
+                                    <div className="d-flex align-items-center">
+                                        <img src="https://res.cloudinary.com/dzpazaufa/image/upload/v1720805005/test_series_y3kecu.jpg" alt="" height="65px" width="100px" className="me-3" />
+                                        <div>
+                                            <strong>{quiz.subject}</strong><br />
+                                            <strong>{formatDate(quiz.date)}</strong>
                                         </div>
-                                    </li>
-                                </Link>
-                            </>
+                                    </div>
+                                </li>
+                            </Link>
                         ))}
                     </ul>
                 }
-
+                <InfeedAd />
                 <Categories />
-
-
             </div>
-            {/* <SubHero /> */}
         </>
     );
+
 }
