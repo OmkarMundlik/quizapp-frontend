@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Spinner from '../components/Spinner';
 import Categories from '../components/Categories';
+import InfeedAd from '../components/InfeedAd';
 
 const ArticleMain = () => {
 
@@ -49,6 +50,7 @@ const ArticleMain = () => {
         <div className="article-main-container">
           <div className="image-with-text-container">
             <img src={article.imageUrl} alt="Image" className="image" />
+            <InfeedAd />
             <p className='articleDate'>{formatDate(article.date)}</p>
             <h1 className="heading">{article.heading}</h1>
             <p className="text">{article.text}</p>

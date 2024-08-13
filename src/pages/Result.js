@@ -81,7 +81,7 @@ export default function Result() {
                                     answer={quizData.questions[id].answer}
                                 />
                             </div>
-                            {id === midIndex - 1 && <InfeedAd />}
+                            {id!=0 && id%3==0 && <InfeedAd />}
                         </React.Fragment>
                     ))}
                 </div>

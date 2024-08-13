@@ -94,7 +94,7 @@ export default function Quiz(props) {
                     {quizData.questions.map((question, id) => (
                         <React.Fragment key={id}>
                             <Question question={question} onAnswerSelected={handleAnswerSelected} id={id} />
-                            {id === midIndex - 1 && <InfeedAd />}
+                            {id!=0 && id%3==0 && <InfeedAd />}
                         </React.Fragment>
                     ))}
                     <div className="center-container">

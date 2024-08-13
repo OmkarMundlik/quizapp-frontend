@@ -8,6 +8,7 @@ import '../styles/ArticleMain.css';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Categories from '../components/Categories';
+import InfeedAd from '../components/InfeedAd';
 
 
 
@@ -58,6 +59,7 @@ export default function LatestUpdate(props) {
         <div className="article-main-container">
           <div className="image-with-text-container">
             <img src={updateData.imageUrl} alt="Image" className="image" />
+            <InfeedAd />
             <p className='articleDate'>{formatDate(updateData.date)}</p>
             <h1 className="heading">{updateData.headline}</h1>
             <p className="text">

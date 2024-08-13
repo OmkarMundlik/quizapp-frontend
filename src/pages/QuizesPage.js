@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import { Link } from 'react-router-dom';
 import Spinner from '../components/Spinner';
 import Footer from '../components/Footer';
+import InfeedAd from '../components/InfeedAd'; // Import the InfeedAd component
 
 export default function QuizesPage(props) {
   const formatDate = (timestamp) => {
@@ -101,20 +102,29 @@ export default function QuizesPage(props) {
             {!filtered_data ? <Spinner /> :
               <div className="container my-3 flex-grow-1">
                 <div className="row">
-                  {filtered_data.map(quiz => (
-                    <div className="col-md-4" key={quiz._id}>
-                      <div className="my-3">
-                        <div className="card">
-                          <img src="https://res.cloudinary.com/dzpazaufa/image/upload/v1720805005/test_series_y3kecu.jpg" className="card-img-top" alt="..." />
-                          <div className="card-body">
-                            <h5 className="card-title">Date: {formatDate(quiz.date)}</h5>
-                            <h5 className="card-title">Subject: {quiz.subject}</h5>
-                            <Link className="btn btn-sm btn-dark" to={`/start/${quiz._id}`}>Start Test</Link>
-                            <p className="card-text my-2"><small className="text-muted">By team@spardhaweb on {new Date(quiz.date).toUTCString()}</small></p>
+                  {filtered_data.map((quiz, index) => (
+                    <React.Fragment key={quiz._id}>
+                      <div className="col-md-4">
+                        <div className="my-3">
+                          <div className="card">
+                            <img src="https://res.cloudinary.com/dzpazaufa/image/upload/v1720805005/test_series_y3kecu.jpg" className="card-img-top" alt="..." />
+                            <div className="card-body">
+                              <h5 className="card-title">Date: {formatDate(quiz.date)}</h5>
+                              <h5 className="card-title">Subject: {quiz.subject}</h5>
+                              <Link className="btn btn-sm btn-dark" to={`/start/${quiz._id}`}>Start Test</Link>
+                              <p className="card-text my-2"><small className="text-muted">By team@spardhaweb on {new Date(quiz.date).toUTCString()}</small></p>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
+
+                      {/* Insert the InfeedAd component after every 3 quizzes */}
+                      {(index)%5==0 && (
+                        <div className="col-md-4">
+                          <InfeedAd />
+                        </div>
+                      )}
+                    </React.Fragment>
                   ))}
                 </div>
               </div>
