@@ -7,6 +7,8 @@ import Footer from '../components/Footer';
 import Spinner from '../components/Spinner';
 import Categories from '../components/Categories';
 import InfeedAd from '../components/InfeedAd';
+import InarticleAd from '../components/InarticleAd';
+import DisplayAd from '../components/DisplayAd';
 
 const ArticleMain = () => {
 
@@ -50,12 +52,15 @@ const ArticleMain = () => {
         <div className="article-main-container">
           <div className="image-with-text-container">
             <img src={article.imageUrl} alt="Image" className="image" />
-            <InfeedAd />
+            <DisplayAd />
             <p className='articleDate'>{formatDate(article.date)}</p>
             <h1 className="heading">{article.heading}</h1>
             <p className="text">{article.text}</p>
             {article.subparts && article.subparts.map((subpart, index) => (
+              <>
               <ArticleComp key={index} subheading={subpart.subheading} text={subpart.text} />
+              <InarticleAd />
+              </>
             ))}
           </div>
         </div>

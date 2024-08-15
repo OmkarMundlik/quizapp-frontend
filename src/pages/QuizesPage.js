@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Spinner from '../components/Spinner';
 import Footer from '../components/Footer';
 import InfeedAd from '../components/InfeedAd'; // Import the InfeedAd component
+import DisplayAd from '../components/DisplayAd';
 
 export default function QuizesPage(props) {
   const formatDate = (timestamp) => {
@@ -99,6 +100,7 @@ export default function QuizesPage(props) {
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12 quizzes-container">
+            <DisplayAd />
             {!filtered_data ? <Spinner /> :
               <div className="container my-3 flex-grow-1">
                 <div className="row">
@@ -119,7 +121,7 @@ export default function QuizesPage(props) {
                       </div>
 
                       {/* Insert the InfeedAd component after every 3 quizzes */}
-                      {(index)%5==0 && (
+                      {index !=0 && (index)%5==0 && (
                         <div className="col-md-4">
                           <InfeedAd />
                         </div>

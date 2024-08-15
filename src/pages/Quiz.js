@@ -6,6 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Spinner from '../components/Spinner';
 import Navbar from '../components/Navbar';
 import InfeedAd from '../components/InfeedAd'
+import DisplayAd from '../components/DisplayAd';
 
 
 export default function Quiz(props) {
@@ -87,6 +88,7 @@ export default function Quiz(props) {
     return (
         <>
             <Navbar />
+            <DisplayAd />
             {!quizData ? <Spinner /> : <>
                 <h1>Daily Quiz : {formatDate(quizData.date)}</h1>
                 <h3 style={{ textAlign: "center" }}>Subject : {quizData.subject}</h3>

@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/articleComp.css'; // Import your CSS file for styling
+import InarticleAd from './InarticleAd';
 
 const ArticleComp = ({ subheading, text }) => {
   const lines = text.split('<br>');

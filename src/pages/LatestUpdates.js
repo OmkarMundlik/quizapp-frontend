@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Categories from '../components/Categories';
 import InfeedAd from '../components/InfeedAd'; // Import the InfeedAd component
+import DisplayAd from '../components/DisplayAd';
 
 function LatestUpdates() {
   const compareDates = (a, b) => {
@@ -46,7 +47,7 @@ function LatestUpdates() {
         <br />
         <br />
         <h1 className="text-center">Latest Updates</h1>
-
+        <DisplayAd />
         {!allupdates ? <Spinner /> :
           <div className="container my-3">
             <div className="row">
