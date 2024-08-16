@@ -68,7 +68,7 @@ export default function Result() {
             <div className="result-container">
                 <h1 className="result-heading">Quiz Result</h1>
                 <div className="score-container">
-                    <h2 className="score-text">Your Score: {score}/{quizData.questions.length}</h2>
+                    <h2 className="score-text">Your Score: {score*2}/{quizData.questions.length*2}</h2>
                 </div>
                 <div className="quiz-container">
                     {quizData.questions.map((question, id) => (

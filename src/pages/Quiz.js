@@ -69,10 +69,10 @@ export default function Quiz(props) {
     };
 
     const onSubmit = () => {
-        if (localResponse.includes("0")) {
-            alert("Please select all options.");
-            return;
-        } 
+        // if (localResponse.includes("0")) {
+        //     alert("Please select all options.");
+        //     return;
+        // } 
         let tempScore = 0;
         for (let i = 0; i < localResponse.length; i++) {
             if (localResponse[i] === quizData.questions[i].answer) {
@@ -83,7 +83,7 @@ export default function Quiz(props) {
         setResponses(localResponse);
         navigate('/result');
     }
-    const midIndex = quizData ? Math.ceil(quizData.questions.length / 2) : 0;
+    
 
     return (
         <>
