@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import Categories from '../components/Categories';
 import InfeedAd from '../components/InfeedAd'; // Import the InfeedAd component
 import DisplayAd from '../components/DisplayAd';
+import { Helmet } from 'react-helmet';
 
 function LatestUpdates() {
   const compareDates = (a, b) => {
@@ -43,6 +44,16 @@ function LatestUpdates() {
   return (
     <div className="d-flex flex-column min-vh-100">
       <div>
+      <Helmet>
+        <title>Latest Updates About MPSC Exam - Spardhaweb</title>
+        <meta name="description" content="Get the latest updates and news about the MPSC exam on Spardha Web. Stay informed with the most recent developments, changes, and announcements related to MPSC exams." />
+        <meta name="keywords" content="latest MPSC updates, MPSC exam news, MPSC exam changes, MPSC announcements" />
+        <meta property="og:title" content="Latest Updates About MPSC Exam - Spardha Web" />
+        <meta property="og:description" content="Get the latest updates and news about the MPSC exam on Spardha Web. Stay informed with the most recent developments, changes, and announcements related to MPSC exams." />
+        <meta property="og:image" content="%PUBLIC_URL%/logo_.jpg" />
+        <meta property="og:url" content="https://spardhaweb.com/latest-updates" />
+      </Helmet>
+
         <Navbar />
         <br />
         <br />

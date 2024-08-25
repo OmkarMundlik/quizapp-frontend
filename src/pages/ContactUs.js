@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useForm, ValidationError } from '@formspree/react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { Helmet } from 'react-helmet';
 
 function ContactUs() {
     const [state, handleSubmit] = useForm("xayrrwbe");
@@ -27,6 +28,20 @@ function ContactUs() {
 
     return (
         <div>
+            <Helmet>
+                <title>Contact Us - Spardhaweb</title>
+                <meta name="description" content="Get in touch with Spardhaweb for any inquiries or support related to MPSC preparation. Our team is here to help with your questions and provide the information you need. Reach out to us today!" />
+                <meta name="keywords" content="contact Spardhaweb, MPSC test series support, MPSC exam inquiries" />
+
+                {/* Open Graph Tags for Social Media */}
+                <meta property="og:title" content="Contact Us - Spardhaweb" />
+                <meta property="og:description" content="Get in touch with Spardhaweb for any inquiries or support related to MPSC preparation. Our team is here to help with your questions and provide the information you need. Reach out to us today!" />
+                <meta property="og:image" content="%PUBLIC_URL%/logo_.jpg" />
+                <meta property="og:url" content="https://spardhaweb.com/contact-us" />
+                <meta property="og:type" content="website" />
+                <meta property="og:site_name" content="Spardhaweb" />
+            </Helmet>
+
             <Navbar />
 
             <div className="container mt-5">

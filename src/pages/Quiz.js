@@ -7,7 +7,7 @@ import Spinner from '../components/Spinner';
 import Navbar from '../components/Navbar';
 import InfeedAd from '../components/InfeedAd'
 import DisplayAd from '../components/DisplayAd';
-
+import axios from "axios";
 
 export default function Quiz(props) {
     
@@ -24,6 +24,17 @@ export default function Quiz(props) {
     const {quizId} = useParams();
     const [id, setId] = useState(quizId);
     const {quizData, setQuizData} = useContext(ResultContext);
+    const [userdata, setUserdata] = useState(null);
+    const [startTime, setStartTime] = useState(null); // Initialize startTime
+    // const getUser = async () => {
+    //     try {
+    //         const response = await axios.get(HOST + "login/success", { withCredentials: true });
+    //         setUserdata(response.data.user);
+    //     } catch (error) {
+    //         console.log("some problem occurred");
+    //     }
+    // }
+
     const fetchData = async()=>{
         try {
             const response = await fetch(HOST + `api/getquiz/${id}`, {
@@ -46,8 +57,10 @@ export default function Quiz(props) {
     const [localResponse, setlocalResponse] = useState([]);
 
     useEffect(() => {
+        // getUser()
         setId(quizId);
         fetchData();
+        // setStartTime(Date.now());
     }, [])
 
     useEffect(() => {
@@ -68,7 +81,7 @@ export default function Quiz(props) {
         setlocalResponse(copyRes);
     };
 
-    const onSubmit = () => {
+    const onSubmit = async () => {
         // if (localResponse.includes("0")) {
         //     alert("Please select all options.");
         //     return;
@@ -81,6 +94,32 @@ export default function Quiz(props) {
         }
         setScore(tempScore);
         setResponses(localResponse);
+        const endTime = Date.now();
+        const timeTaken = Math.round((endTime - startTime) / 1000); // Time in seconds
+
+        // Check if user is authenticated
+        // if (userdata) {
+        //     try {
+        //         const response = await fetch(`${process.env.REACT_APP_HOST_NAME}api/submitquiz`, {
+        //             method: 'POST',
+        //             headers: { 'Content-Type': 'application/json' },
+        //             body: JSON.stringify({
+        //                 userId: userdata._id, 
+        //                 quizId: quizData._id, 
+        //                 score: tempScore*2,
+        //                 totalQuestions: quizData.questions.length,
+        //                 correctAnswers: tempScore,
+        //                 timeTaken: timeTaken
+        //             }),
+        //         });
+
+        //         if (!response.ok) throw new Error('Failed to submit quiz attempt');
+        //         const result = await response.json();
+        //         console.log('Quiz attempt submitted successfully:', result);
+        //     } catch (error) {
+        //         console.error('Error submitting quiz attempt:', error);
+        //     }
+        // }
         navigate('/result');
     }
     

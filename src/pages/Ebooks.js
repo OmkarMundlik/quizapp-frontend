@@ -5,6 +5,7 @@ import Spinner from '../components/Spinner';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Categories from '../components/Categories';
+import { Helmet } from 'react-helmet';
 
 
 function Ebooks() {
@@ -43,6 +44,15 @@ function Ebooks() {
   return (
     <div className="d-flex flex-column min-vh-100">
       <div>
+      <Helmet>
+        <title>MPSC Study Material - Spardhaweb</title>
+        <meta name="description" content="Find comprehensive MPSC study material on Spardha Web. Access well-organized resources, practice tests, and guides to aid your MPSC exam preparation." />
+        <meta name="keywords" content="MPSC study material, MPSC preparation resources, MPSC guides, exam practice material" />
+        <meta property="og:title" content="MPSC Study Material - Spardha Web" />
+        <meta property="og:description" content="Find comprehensive MPSC study material on Spardha Web. Access well-organized resources, practice tests, and guides to aid your MPSC exam preparation." />
+        <meta property="og:image" content="%PUBLIC_URL%/logo_.jpg" />
+        <meta property="og:url" content="https://spardhaweb.com/ebooks" />
+      </Helmet>
         <Navbar />
         <br />
         <br />

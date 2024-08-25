@@ -2,10 +2,25 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { Helmet } from 'react-helmet';
 
 const PrivacyPolicy = () => {
   return (
     <div>
+      <Helmet>
+        <title>Privacy Policy - Spardhaweb</title>
+        <meta name="description" content="Review Spardhaweb's Privacy Policy to understand how we collect, use, and protect your personal information. Learn about your rights and our commitment to data privacy and security." />
+        <meta name="keywords" content="privacy policy, Spardhaweb privacy, data protection, personal information" />
+
+        {/* Open Graph Tags for Social Media */}
+        <meta property="og:title" content="Privacy Policy - Spardhaweb" />
+        <meta property="og:description" content="Review Spardhaweb's Privacy Policy to understand how we collect, use, and protect your personal information. Learn about your rights and our commitment to data privacy and security." />
+        <meta property="og:image" content="%PUBLIC_URL%/logo_.jpg" />
+        <meta property="og:url" content="https://spardhaweb.com/privacy-policy" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Spardhaweb" />
+      </Helmet>
+
       <Navbar />
       <div className="container mt-5" style={{ fontSize: '1.2rem' }}>
         <h1 className="text-center mb-4" style={{ fontSize: '2rem' }}><strong>Privacy Policy for Spardhaweb</strong></h1>

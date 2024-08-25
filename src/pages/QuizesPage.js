@@ -5,6 +5,7 @@ import Spinner from '../components/Spinner';
 import Footer from '../components/Footer';
 import InfeedAd from '../components/InfeedAd'; // Import the InfeedAd component
 import DisplayAd from '../components/DisplayAd';
+import { Helmet } from 'react-helmet';
 
 export default function QuizesPage(props) {
   const formatDate = (timestamp) => {
@@ -29,7 +30,7 @@ export default function QuizesPage(props) {
 
       const lowercasedCategories = selectedCategories.map(category => category.toLowerCase());
 
-      const filtered = quizes.filter(quiz => 
+      const filtered = quizes.filter(quiz =>
         lowercasedCategories.some(category => quiz.subject.toLowerCase().includes(category))
       );
 
@@ -69,7 +70,7 @@ export default function QuizesPage(props) {
     fetchData();
   }, []);
 
-  const categories = [['All'],['भूगोल','GEOGRAPHY'] ,['चालू घडामोडी'],['इतिहास','History'],['गणित','Math'],['मराठी व्याकरण'], [ 'विज्ञान','Science','GS'], ['राज्यशास्त्र','POLITY']];
+  const categories = [['All'], ['भूगोल', 'GEOGRAPHY'], ['चालू घडामोडी'], ['इतिहास', 'History'], ['गणित', 'Math'], ['मराठी व्याकरण'], ['विज्ञान', 'Science', 'GS'], ['राज्यशास्त्र', 'POLITY']];
 
   const handleCategoryClick = (categoryList) => {
     setSelectedCategories(categoryList);
@@ -78,15 +79,25 @@ export default function QuizesPage(props) {
 
   return (
     <div className="quizes-page">
+      <Helmet>
+        <title>Free MPSC Test Series - Spardhaweb</title>
+        <meta name="description" content="Access free MPSC test series on Spardha Web. Boost your preparation with comprehensive test series and daily quizzes. Start your free test series now!" />
+        <meta name="keywords" content="free MPSC test series, MPSC preparation, free test series, MPSC exam practice" />
+        <meta property="og:title" content="Free MPSC Test Series - Spardha Web" />
+        <meta property="og:description" content="Access free MPSC test series on Spardha Web. Boost your preparation with comprehensive test series and daily quizzes. Start your free test series now!" />
+        <meta property="og:image" content="%PUBLIC_URL%/logo_.jpg" />
+        <meta property="og:url" content="https://spardhaweb.com/allquizes" />
+      </Helmet>
+
       <Navbar />
 
-      <h1 className="text-center mt-4">Test Series 2024</h1>
+      <h1 className="text-center mt-4">MPSC Test Series 2024</h1>
 
       <div className="container">
         <div className="row justify-content-center">
           {categories.map((categoryList, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className={`col-auto mx-2 p-3 ${categoryList.every(category => selectedCategories.includes(category)) ? 'bg-primary text-white' : 'bg-light'} category`}
               onClick={() => handleCategoryClick(categoryList)}
               style={{ cursor: 'pointer', fontSize: '1.2rem', borderRadius: '8px', fontWeight: 'bold' }}
@@ -121,7 +132,7 @@ export default function QuizesPage(props) {
                       </div>
 
                       {/* Insert the InfeedAd component after every 3 quizzes */}
-                      {index !=0 && (index)%5==0 && (
+                      {index != 0 && (index) % 5 == 0 && (
                         <div className="col-md-4">
                           <InfeedAd />
                         </div>

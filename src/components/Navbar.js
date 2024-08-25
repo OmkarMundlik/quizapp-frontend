@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from "../assets/logo_.jpg";
 import '../styles/Navbar.css';
 import Login from '../pages/Login';
-import axios from "axios"
+// import axios from "axios"
 
 export default function Navbar() {
 
@@ -34,9 +34,9 @@ export default function Navbar() {
         }
     };
 
-    const logout = () => {
-        window.open(hostname + "logout", "_self");
-    }
+    // const logout = () => {
+    //     window.open(hostname + "logout", "_self");
+    // }
 
     return (
         <nav id="navbar" className="navbar navbar-expand-lg navbar-light py-3" style={{ transition: 'all 0.3s ease' }}>

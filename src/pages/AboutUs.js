@@ -2,10 +2,25 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Categories from '../components/Categories';
+import { Helmet } from 'react-helmet';
 
 const AboutUs = () => {
   return (
     <div>
+      <Helmet>
+        <title>About Us - Spardhaweb</title>
+        <meta name="description" content="Learn more about Spardhaweb, a leading platform for MPSC preparation. Discover our mission, values, and the team behind our free test series and educational resources." />
+        <meta name="keywords" content="about Spardhaweb, MPSC preparation, MPSC test series team, educational resources" />
+
+        {/* Open Graph Tags for Social Media */}
+        <meta property="og:title" content="About Us - Spardhaweb" />
+        <meta property="og:description" content="Learn more about Spardhaweb, a leading platform for MPSC preparation. Discover our mission, values, and the team behind our free test series and educational resources." />
+        <meta property="og:image" content="%PUBLIC_URL%/logo_.jpg" />
+        <meta property="og:url" content="https://spardhaweb.com/about-us" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Spardhaweb" />
+      </Helmet>
+
       <Navbar />
       <div className="container mt-5">
         <div className="jumbotron">
