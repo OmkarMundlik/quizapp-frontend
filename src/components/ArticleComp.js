@@ -3,7 +3,7 @@ import '../styles/articleComp.css'; // Import your CSS file for styling
 import InarticleAd from './InarticleAd';
 
 const ArticleComp = ({ subheading, text }) => {
-  const lines = text.split('<br>');
+  const lines = text.split(/<br\s*\/?>/i);  
   return (
     <div className="container-article">
       <div className="subheading">{subheading}</div>

@@ -63,7 +63,27 @@ function AllArticles() {
                         <Link to={`/article/${article._id}`} style={{ textDecoration: "none", color: "#000" }}>
                           <h5 className="card-title">{article.heading}</h5>
                         </Link>
-                        <p className="card-text">{article.text}</p>
+                        {/* <p className="card-text">{article.text}</p> */}
+                        <p className="card-text">
+                          {article.text.length <= 100 ? (
+                            article.text.split(/<br\s*\/?>/i).map((line, index) => (
+                              <React.Fragment key={index}>
+                                {line}
+                                <br />
+                              </React.Fragment>
+                            ))
+                          ) : (
+                            <>
+                              {article.text.substring(0, 100).split(/<br\s*\/?>/i).map((line, index) => (
+                                <React.Fragment key={index}>
+                                  {line} 
+                                  <br />
+                                </React.Fragment>
+                              ))}
+                              {"..."} {/* Add the ellipsis after all lines */}
+                            </>
+                          )}
+                        </p>
                         <Link rel="noreferrer" to={`/article/${article._id}`} className="btn btn-sm btn-dark">Read More</Link>
                         <p className="card-text my-2"><small className="text-muted">By team@spardhaweb on {new Date(article.date).toUTCString()}</small></p>
                       </div>
@@ -72,7 +92,7 @@ function AllArticles() {
                 </div>
 
                 {/* Add InfeedAd after every 3 articles */}
-                {index !=0 && (index)%3==0 && (
+                {index != 0 && (index) % 3 == 0 && (
                   <div className="col-4">
                     <InfeedAd />
                   </div>

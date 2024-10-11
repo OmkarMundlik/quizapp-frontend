@@ -4,11 +4,17 @@ import './styles/index.css';
 import App from './pages/App';
 import reportWebVitals from './reportWebVitals';
 import { Analytics } from '@vercel/analytics/react';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+
 root.render(
   <React.StrictMode>
-    <Analytics />
-    <App />
+        <GoogleOAuthProvider
+                clientId={process.env.REACT_APP_OAUTH_ID}>
+        <Analytics />
+       <App />
+       </GoogleOAuthProvider>
   </React.StrictMode>
 );
 

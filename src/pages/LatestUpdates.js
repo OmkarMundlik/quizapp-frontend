@@ -13,7 +13,7 @@ function LatestUpdates() {
   const compareDates = (a, b) => {
     return new Date(b.date) - new Date(a.date);
   };
-  
+
   const HOST = process.env.REACT_APP_HOST_NAME;
   const [allupdates, setAllUpdates] = useState(null);
 
@@ -44,15 +44,15 @@ function LatestUpdates() {
   return (
     <div className="d-flex flex-column min-vh-100">
       <div>
-      <Helmet>
-        <title>Latest Updates About MPSC Exam - Spardhaweb</title>
-        <meta name="description" content="Get the latest updates and news about the MPSC exam on Spardha Web. Stay informed with the most recent developments, changes, and announcements related to MPSC exams." />
-        <meta name="keywords" content="latest MPSC updates, MPSC exam news, MPSC exam changes, MPSC announcements" />
-        <meta property="og:title" content="Latest Updates About MPSC Exam - Spardha Web" />
-        <meta property="og:description" content="Get the latest updates and news about the MPSC exam on Spardha Web. Stay informed with the most recent developments, changes, and announcements related to MPSC exams." />
-        <meta property="og:image" content="%PUBLIC_URL%/logo_.jpg" />
-        <meta property="og:url" content="https://spardhaweb.com/latest-updates" />
-      </Helmet>
+        <Helmet>
+          <title>Latest Updates About MPSC Exam - Spardhaweb</title>
+          <meta name="description" content="Get the latest updates and news about the MPSC exam on Spardha Web. Stay informed with the most recent developments, changes, and announcements related to MPSC exams." />
+          <meta name="keywords" content="latest MPSC updates, MPSC exam news, MPSC exam changes, MPSC announcements" />
+          <meta property="og:title" content="Latest Updates About MPSC Exam - Spardha Web" />
+          <meta property="og:description" content="Get the latest updates and news about the MPSC exam on Spardha Web. Stay informed with the most recent developments, changes, and announcements related to MPSC exams." />
+          <meta property="og:image" content="%PUBLIC_URL%/logo_.jpg" />
+          <meta property="og:url" content="https://spardhaweb.com/latest-updates" />
+        </Helmet>
 
         <Navbar />
         <br />
@@ -75,8 +75,27 @@ function LatestUpdates() {
                             <h5 className="card-title">{update.headline}</h5>
                           </Link>
                           <p className="card-text">
-                            {update.mainText.length <= 50 ? update.mainText : update.mainText.substring(0, 50) + "..."}
+                            {update.mainText.length <= 100 ? (
+                              update.mainText.split(/<br\s*\/?>/i).map((line, index) => (
+                                <React.Fragment key={index}>
+                                  {line}
+                                  <br />
+                                </React.Fragment>
+                              ))
+                            ) : (
+                              <>
+                                {update.mainText.substring(0, 100).split(/<br\s*\/?>/i).map((line, index) => (
+                                  <React.Fragment key={index}>
+                                    {line} {/* Just print the line without truncation */}
+                                    <br />
+                                  </React.Fragment>
+                                ))}
+                                {"..."} {/* Add the ellipsis after all lines */}
+                              </>
+                            )}
                           </p>
+
+
                           <Link to={`/latest-update/${update._id}`} className="btn btn-sm btn-dark">Go To Link</Link>
                           <p className="card-text my-2"><small className="text-muted">By team@spardhaweb on {new Date(update.date).toUTCString()}</small></p>
                         </div>
@@ -85,7 +104,7 @@ function LatestUpdates() {
                   </div>
 
                   {/* Insert the InfeedAd component after every 3 updates */}
-                  {(index)%5 == 0  && (
+                  {(index) % 5 == 0 && (
                     <div className="col-md-4">
                       <InfeedAd />
                     </div>

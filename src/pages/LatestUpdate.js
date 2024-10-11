@@ -63,13 +63,14 @@ export default function LatestUpdate(props) {
             <p className='articleDate'>{formatDate(updateData.date)}</p>
             <h1 className="heading">{updateData.headline}</h1>
             <p className="text">
-              {updateData.mainText.split('<br>').map((line, index) => (
-                // Render each line with a <br> tag
-                <React.Fragment key={index}>
-                  {line}
-                  <br />
-                </React.Fragment>
-              ))}
+              <p className="text">
+                {updateData.mainText.split(/<br\s*\/?>/i).map((line, index) => (
+                  <React.Fragment key={index}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+                ))}
+              </p>
             </p>
             <div className="table-responsive">
               <table className="table table-bordered">

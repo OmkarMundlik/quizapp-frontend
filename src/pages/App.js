@@ -27,6 +27,9 @@ import LatestUpdate from './LatestUpdate';
 import CreateLatestUpdate from './CreateLatestUpdate';
 import Dashboard from './Dashboard';
 import Error from '../components/Error';
+import Login from '../components/Login';
+import Signup from '../components/Signup'
+import UserProtectedRoute from '../components/UserProtectedRoute';
 
 function App() {
   const router = createBrowserRouter([
@@ -111,10 +114,19 @@ function App() {
       path: "/create-updates",
       element: <AdminProtected Component={CreateLatestUpdate}/>
     },
-    {
-      path: "dashboard",
-      element: <Dashboard />
-    },
+    // {
+    //   path: "/dashboard",
+    //   element: 
+    //     <UserProtectedRoute Component={Dashboard} />
+    // },
+    // {
+    //   path : "/signup",
+    //   element : <Signup />
+    // },
+    // {
+    //   path : "/login",
+    //   element : <Login />
+    // },
     {
       path: "*",
       element: <Error />,
