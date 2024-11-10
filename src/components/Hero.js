@@ -6,9 +6,11 @@ import '../styles/Hero.css'
 export default function Hero() {
     return (
         <div className="mainDiv container-fluid d-flex align-items-center justify-content-center">
+            
             <div className="hero-img-container" >
                 <img src={HeroImg} className="img-fluid" alt="Hero Image" style={{ width: "100%" }} />
             </div>
+           
             <div className="hero-content-container" >
                 <div className="hero-content">
                     <h3 className="display-2 fw-bold m-5 p-6">Test Series and Daily Current Affairs <span className="text-primary">By Spardhaweb</span></h3>
@@ -22,6 +24,8 @@ export default function Hero() {
 
                 </div>
             </div>
+
+            
         </div>
     );
 }

@@ -81,6 +81,7 @@ export default function Dashboard() {
       <h1>Welcome, {userDetails ? userDetails.Name : 'Guest'} </h1>
 
       {/* Check if data is still being loaded */}
+      {console.log(Cookies.get('jwtoken'))}
       {loading ? (
         <p>Loading analytics...</p>
       ) : (
@@ -101,8 +102,7 @@ export default function Dashboard() {
         totalAvailableQuizzes={totalAvailableQuizzes}
         totalQuizzesAttempted={totalQuizzesAttempted}
       />
-
-
+      
       <button onClick={handleLogout}>Logout</button>
     </div>
   );

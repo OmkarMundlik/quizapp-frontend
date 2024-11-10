@@ -30,8 +30,6 @@ function AllArticles() {
         }, 2000);
     }
 
-
-
     const [articles, setArticles] = useState([]);
 
     const deleteArticle = async (id) => {

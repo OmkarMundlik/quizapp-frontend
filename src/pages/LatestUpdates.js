@@ -8,10 +8,24 @@ import Categories from '../components/Categories';
 import InfeedAd from '../components/InfeedAd'; // Import the InfeedAd component
 import DisplayAd from '../components/DisplayAd';
 import { Helmet } from 'react-helmet';
+import YoutubeEmbed from '../components/YoutubeEmbed';
 
 function LatestUpdates() {
   const compareDates = (a, b) => {
     return new Date(b.date) - new Date(a.date);
+  };
+
+  const getYouTubeEmbedId = (url) => {
+    // Updated regex to match youtube.com or youtu.be URLs, including query parameters
+    const youtubeRegex = /(?:youtube\.com\/(?:[^\/\n\s]+\/[^\n\s]*\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+    
+    // Match the URL with the regular expression
+    const match = url.match(youtubeRegex);
+  
+    if (match && match[1]) {
+      return match[1]; // Return the 11-character video ID
+    }
+    return null; // Return null if no valid ID is found
   };
 
   const HOST = process.env.REACT_APP_HOST_NAME;
@@ -69,7 +83,7 @@ function LatestUpdates() {
                       <div className="card">
                         <div style={{ display: 'flex', justifyContent: 'flex-end', position: 'absolute', right: 0, padding: '2px' }}>
                         </div>
-                        <img src="https://res.cloudinary.com/dzpazaufa/image/upload/v1720804964/latest_updates_aq4tlu.jpg" className="card-img-top" alt="..." />
+                        {update.youtubeVid ? <YoutubeEmbed embedId={getYouTubeEmbedId(update.youtubeVid)} autoplay={false} mute={true}/> : <img src="https://res.cloudinary.com/dzpazaufa/image/upload/v1720804964/latest_updates_aq4tlu.jpg" className="card-img-top" alt="..." />}
                         <div className="card-body">
                           <Link to={`/latest-update/${update._id}`} style={{ textDecoration: "none", color: "#000" }}>
                             <h5 className="card-title">{update.headline}</h5>

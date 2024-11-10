@@ -5,6 +5,7 @@ import Footer from '../components/Footer'
 import SubHero from '../components/SubHero'
 import MultiplexAd from '../components/MultiplexAd'
 import { Helmet } from 'react-helmet'
+import Socials from '../components/Socials'
 
 
 export default function Main() {
@@ -26,6 +27,7 @@ export default function Main() {
       </Helmet>
 
       <Navbar />
+      
       <Hero />
       <SubHero />
       <Footer />

@@ -114,19 +114,19 @@ function App() {
       path: "/create-updates",
       element: <AdminProtected Component={CreateLatestUpdate}/>
     },
-    {
-      path: "/dashboard",
-      element: 
-        <UserProtectedRoute Component={Dashboard} />
-    },
-    {
-      path : "/signup",
-      element : <Signup />
-    },
-    {
-      path : "/login",
-      element : <Login />
-    },
+    // {
+    //   path: "/dashboard",
+    //   element: 
+    //     <UserProtectedRoute Component={Dashboard} />
+    // },
+    // {
+    //   path : "/signup",
+    //   element : <Signup />
+    // },
+    // {
+    //   path : "/login",
+    //   element : <Login />
+    // },
     {
       path: "*",
       element: <Error />,

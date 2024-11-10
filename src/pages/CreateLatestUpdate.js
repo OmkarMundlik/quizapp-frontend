@@ -12,6 +12,7 @@ export default function CreateLatestUpdate() {
     const [headline, setHeadline] = useState("");
     const [mainText, setMainText] = useState("");
     const [mainImg, setMainImg] = useState(null);
+    const [youtubeVid, setYoutubeVid] = useState(null);
     const [subparts, setSubparts] = useState([]);
     const [spinner, setSpinner] = useState(false);
     const [subpart, setSubpart] = useState({
@@ -110,7 +111,8 @@ export default function CreateLatestUpdate() {
                 headline: headline,
                 mainText: mainText,
                 linksArray: subparts,
-                imageUrl: imageUrl
+                imageUrl: imageUrl,
+                youtubeVid: youtubeVid
             };
 
             // console.log(linksObj);
@@ -215,9 +217,11 @@ export default function CreateLatestUpdate() {
                                     }}
                                 ></textarea>
                             </div>
-                            <label htmlFor="" style={{ marginBottom: "10px" }}>Select Image</label>
+                            <label htmlFor="" style={{ marginBottom: "10px" }}><b>Paste Youtube Link</b></label>
+                            <input type="text" style={{padding:"10px" , margin: "10px"}} onChange={(e) => { setYoutubeVid(e.target.value) }}/>
                             <br />
-                            <input type="file" onChange={(e) => { setMainImg(e.target.files[0]) }} accept="image/*" />
+                            <label htmlFor="" style={{ marginBottom: "10px" }}><b>Select Image</b></label>
+                            <input type="file" style={{padding:"10px" , margin: "10px"}} onChange={(e) => { setMainImg(e.target.files[0]) }} accept="image/*" />
 
                             <div className="card mt-4">
                                 <div className="card-header">

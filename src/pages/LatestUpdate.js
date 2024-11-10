@@ -9,10 +9,24 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Categories from '../components/Categories';
 import DisplayAd from '../components/DisplayAd';
+import YoutubeEmbed from '../components/YoutubeEmbed';
 
 
 
 export default function LatestUpdate(props) {
+  const getYouTubeEmbedId = (url) => {
+    // Updated regex to match youtube.com or youtu.be URLs, including query parameters
+    const youtubeRegex = /(?:youtube\.com\/(?:[^\/\n\s]+\/[^\n\s]*\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+    
+    // Match the URL with the regular expression
+    const match = url.match(youtubeRegex);
+  
+    if (match && match[1]) {
+      return match[1]; // Return the 11-character video ID
+    }
+    return null; // Return null if no valid ID is found
+  };
+
   const formatDate = (timestamp) => {
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     const date = new Date(timestamp);
@@ -58,8 +72,9 @@ export default function LatestUpdate(props) {
       {!updateData ? <Spinner /> : <>
         <div className="article-main-container">
           <div className="image-with-text-container">
-            <img src={updateData.imageUrl} alt="Image" className="image" />
-            <DisplayAd />
+            {/* <img src={updateData.imageUrl} alt="Image" className="image" />
+             */}
+            {updateData.youtubeVid ? <YoutubeEmbed embedId={getYouTubeEmbedId(updateData.youtubeVid)} autoplay={true} mute={false} /> : <YoutubeEmbed embedId={getYouTubeEmbedId("https://youtu.be/LIosS8bppQI?feature=shared")} autoplay={true} mute={true}/>}
             <p className='articleDate'>{formatDate(updateData.date)}</p>
             <h1 className="heading">{updateData.headline}</h1>
             <p className="text">
@@ -72,6 +87,7 @@ export default function LatestUpdate(props) {
                 ))}
               </p>
             </p>
+            <DisplayAd />
             <div className="table-responsive">
               <table className="table table-bordered">
                 <tbody>
@@ -106,6 +122,7 @@ export default function LatestUpdate(props) {
 
       </>}
       <Categories />
+      <DisplayAd />
       <Footer />
     </>
   );

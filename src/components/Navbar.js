@@ -1,26 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie'; // Import the cookie library
 import logo from "../assets/logo_.jpg";
 import '../styles/Navbar.css';
-import Login from '../pages/Login';
-// import axios from "axios"
+import Socials from './Socials';
 
 export default function Navbar() {
-
     const hostname = process.env.REACT_APP_HOST_NAME;
-    // const [userdata, setUserdata] = useState(null);
-
-    // const getUser = async () => {
-    //     try {
-    //         const response = await axios.get(hostname + "login/success", { withCredentials: true });
-    //         setUserdata(response.data.user);
-    //     } catch (error) {
-    //         console.log("some problem occurred");
-    //     }
-    // }
+    const navigate = useNavigate();
 
     useEffect(() => {
-        // getUser();
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
@@ -33,10 +22,14 @@ export default function Navbar() {
             navbar.classList.remove('sticky');
         }
     };
+    const handleLogout = () => {
+        Cookies.remove('jwtoken');
+        Cookies.remove('user');
+        navigate('/login');
+    };
 
-    // const logout = () => {
-    //     window.open(hostname + "logout", "_self");
-    // }
+    // Check if the user is logged in based on the presence of the JWT token
+    const isLoggedIn = !!Cookies.get('jwtoken');
 
     return (
         <nav id="navbar" className="navbar navbar-expand-lg navbar-light py-3" style={{ transition: 'all 0.3s ease' }}>
@@ -63,7 +56,6 @@ export default function Navbar() {
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link active fs-5 px-3 font-weight-bold" aria-current="page" to="/latest-updates"><b>Latest Updates</b></Link>
-
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link active fs-5 px-3 font-weight-bold" aria-current="page" to="/about-us"><b>About Us</b></Link>
@@ -72,22 +64,31 @@ export default function Navbar() {
                             <Link className="nav-link active fs-5 px-3 font-weight-bold" aria-current="page" to="/contact-us"><b>Contact Us</b></Link>
                         </li>
 
-                        {/* {userdata ? (
+                        {/* Dashboard and Login/Signup Logic */}
+                        {/* {isLoggedIn ? (
                             <>
                                 <li className="nav-item">
-                                    <Link className="nav-link active fs-5 px-3 font-weight-bold" aria-current="page" to="/dashboard"><b>Dashboard</b></Link>
+                                    <Link className="nav-link active fs-5 px-3 font-weight-bold" to="/dashboard"><b>Dashboard</b></Link>
                                 </li>
-                                <button className='btn btn-primary' onClick={logout}>Logout</button>
-                                <li>
-                                    <img src={userdata?.image} alt="" style={{ width: "50%", borderRadius: "50%" }} />
+                                <li className="nav-item">
+                                    <button className="nav-link active fs-5 px-3 font-weight-bold" onClick={handleLogout} ><b>Logout</b></button>
                                 </li>
                             </>
                         ) : (
-                            <Login />
+                            <div className="d-flex">
+                                <li className="nav-item">
+                                    <Link className="nav-link active fs-5 px-3 font-weight-bold" to="/login"><b>Login</b></Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link active fs-5 px-3 font-weight-bold" to="/signup"><b>Signup</b></Link>
+                                </li>
+                            </div>
                         )} */}
                     </ul>
                 </div>
             </div>
+
+            <Socials />
         </nav>
     );
 }

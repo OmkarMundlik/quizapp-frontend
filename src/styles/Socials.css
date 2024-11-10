@@ -1,0 +1,99 @@
+/* src/styles/Socials.css */
+
+/* Base styling for the container */
+.socials-container {
+    position: fixed; /* Make the container fixed */
+    top: 100px; /* Distance from the top of the page */
+    left: 50%; /* Horizontally center the container */
+    transform: translateX(-50%); /* Adjust positioning to truly center it */
+    z-index: 1030; /* Ensure it stays above other content */
+    display: flex; /* Use flexbox to align icons */
+    flex-direction: row; /* Display icons in a row by default */
+    gap: 15px; /* Space between icons */
+    padding: 10px;
+    background-color: white; /* White background for better visibility */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow */
+  }
+  
+  /* Style for the icon list */
+  .socials-container ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Align icons horizontally */
+    gap: 15px; /* Space between icons */
+  }
+  
+  /* Each icon container */
+  .socials-container li {
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Style for individual social link icons */
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    color: #333;
+    font-size: 30px; /* Icon size */
+    transition: color 0.3s;
+  }
+  
+  /* Hover effect for social icons */
+  .social-link:hover {
+    color: #007bff; /* Change color on hover */
+  }
+  
+  /* Icon font size */
+  .social-link i {
+    font-size: 30px; /* Icon size */
+  }
+  
+  /* Responsive Styles */
+  
+  /* For tablets and larger screens: center icons */
+  @media (max-width: 768px) {
+    .socials-container {
+      top: 80px; /* Slightly adjust the top position for tablets */
+      left: 50%; /* Still center the container on tablets */
+      transform: translateX(-50%); /* Keep it centered horizontally */
+      flex-direction: row; /* Display icons in a row */
+      gap: 15px;
+    }
+  
+    .socials-container ul {
+      flex-direction: row; /* Keep the icons horizontally aligned */
+    }
+  
+    .social-link {
+      font-size: 30px; /* Normal icon size */
+      padding: 10px;
+    }
+  }
+  
+  /* For mobile screens: move icons to the top-right and stack vertically */
+  @media (max-width: 480px) {
+    .socials-container {
+      top: 100px; /* Move the container closer to the top */
+      right: 10px; /* Position it at the top-right corner */
+      left: unset; /* Remove the centering logic */
+      transform: unset; /* Remove the translation */
+      flex-direction: column; /* Stack the icons vertically */
+      gap: 10px; /* Smaller gap between icons */
+      padding: 8px;
+    }
+  
+    .socials-container ul {
+      flex-direction: column; /* Stack the icons vertically */
+      gap: 10px; /* Adjust space between icons when stacked */
+    }
+  
+    .social-link {
+      font-size: 25px; /* Reduce icon size for small screens */
+      padding: 8px;
+    }
+  }
+  
