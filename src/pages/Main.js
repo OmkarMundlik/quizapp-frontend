@@ -27,7 +27,7 @@ export default function Main() {
       </Helmet>
 
       <Navbar />
-      
+      <Socials />
       <Hero />
       <SubHero />
       <Footer />

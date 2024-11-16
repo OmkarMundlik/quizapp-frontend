@@ -1,4 +1,13 @@
 /* src/styles/Socials.css */
+.socials-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  overflow: hidden; /* Prevents overflow */
+  z-index: 1030;
+}
 
 /* Base styling for the container */
 .socials-container {
