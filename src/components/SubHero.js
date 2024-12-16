@@ -27,6 +27,29 @@ function SubHero() {
     const [latestUpdates, setLatestUpdates] = useState(null);
     const [studyMaterial, setStudyMaterial] = useState(null);
 
+    const fetchQuizesData = async (page = 1, limit = 15) => {
+        try {
+            const response = await fetch(`${HOST}api/getallquizes?page=${page}&limit=${limit}`);
+            const data = await response.json();
+            if (response.ok) {
+                // Sort quizzes based on date (descending)
+                const sortedData = data.quizzes.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+                // If there are fewer than 2 quizzes, display all; otherwise, limit to 2
+                if (sortedData.length < 2) {
+                    setQuizes(sortedData);
+                } else {
+                    setQuizes(sortedData.slice(0, 2));
+                }
+
+            } else {
+                console.error('Failed to fetch quizzes');
+            }
+        } catch (error) {
+            console.error('Error fetching quizzes:', error);
+        } 
+    };
+
     const fetchData = async (type) => {
         let url = "";
         if (type === 'articles') {
@@ -86,7 +109,7 @@ function SubHero() {
 
     useEffect(() => {
         fetchData('articles');
-        fetchData('quizes');
+        fetchQuizesData();
         fetchData('study_material');
         fetchData('latestupdate');
         console.log(articles)
@@ -143,7 +166,7 @@ function SubHero() {
                 </div>
             }
             <h1 className="text-center mt-4 mb-5">Test Series 2024</h1>
-             {!quizes ? <Spinner /> :
+            {!quizes ? <Spinner /> :
                 <div className="container my-3 flex-grow-1">
                     <div className="row">
                         {quizes.map(quiz => (
@@ -157,7 +180,7 @@ function SubHero() {
                                         <div className="card-body">
                                             <h5 className="card-title">Date: {formatDate(quiz.date)}</h5>
                                             <h5 className="card-title">Subject: {quiz.subject}</h5>
-                                            <Link  className="btn btn-sm btn-dark" to={`/start/${quiz._id}`}>Start Test</Link>
+                                            <Link className="btn btn-sm btn-dark" to={`/start/${quiz._id}`}>Start Test</Link>
                                             <p className="card-text my-2"><small className="text-muted">By team@spardhaweb on {new Date(quiz.date).toUTCString()}</small></p>
                                         </div>
                                     </div>
