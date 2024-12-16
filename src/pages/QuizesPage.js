@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar';
 import { Link } from 'react-router-dom';
 import Spinner from '../components/Spinner';
 import Footer from '../components/Footer';
-import InfeedAd from '../components/InfeedAd'; // Import the InfeedAd component
+import InfeedAd from '../components/InfeedAd';
 import DisplayAd from '../components/DisplayAd';
 import { Helmet } from 'react-helmet';
 
@@ -17,8 +17,9 @@ export default function QuizesPage(props) {
     return `${day} ${month} ${year}`;
   };
 
-  const compareDates = (a, b) => {
-    return new Date(b.date) - new Date(a.date);
+  const handleCategoryClick = (categoryList) => {
+    setSelectedCategories(categoryList);
+    filterBySubjects(categoryList);
   };
 
   const filterBySubjects = (selectedCategories) => {
@@ -39,14 +40,17 @@ export default function QuizesPage(props) {
   };
 
   const HOST = process.env.REACT_APP_HOST_NAME;
-
   const [quizes, setQuizes] = useState(null);
   const [filtered_data, setFiltered_data] = useState(null);
   const [selectedCategories, setSelectedCategories] = useState(['All']);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [loading, setLoading] = useState(true);
 
-  const fetchData = async () => {
+  const fetchData = async (page = 1) => {
+    setLoading(true);  // Set loading to true when fetching data
     try {
-      const response = await fetch(HOST + 'api/getallquizes', {
+      const response = await fetch(`${HOST}api/getallquizes?page=${page}&limit=15`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json"
@@ -57,24 +61,30 @@ export default function QuizesPage(props) {
       }
       const data = await response.json();
 
-      // Sort the quizzes based on date in descending order
-      const sortedQuizzes = data.sort(compareDates);
-      setQuizes(sortedQuizzes);
-      setFiltered_data(sortedQuizzes);
+      setQuizes(data.quizzes);
+      setFiltered_data(data.quizzes);
+      setTotalPages(data.totalPages);
+      setCurrentPage(data.currentPage);
     } catch (error) {
       console.error('Error fetching quizzes:', error);
+    } finally {
+      setLoading(false);  // Set loading to false after fetching is done
     }
   };
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    fetchData(currentPage);
+  }, [currentPage]);
 
   const categories = [['All'], ['भूगोल', 'GEOGRAPHY'], ['चालू घडामोडी'], ['इतिहास', 'History'], ['गणित', 'Math'], ['मराठी व्याकरण'], ['विज्ञान', 'Science', 'GS'], ['राज्यशास्त्र', 'POLITY']];
 
-  const handleCategoryClick = (categoryList) => {
-    setSelectedCategories(categoryList);
-    filterBySubjects(categoryList);
+  const handleNextPage = () => {
+    setSelectedCategories(['All']);  // Reset the selected categories to 'All' on next page
+    setCurrentPage(currentPage + 1);
+  };
+
+  const handlePrevPage = () => {
+    setCurrentPage(currentPage - 1);
   };
 
   return (
@@ -112,7 +122,9 @@ export default function QuizesPage(props) {
         <div className="row">
           <div className="col-md-12 quizzes-container">
             <DisplayAd />
-            {!filtered_data ? <Spinner /> :
+            {loading ? (
+              <Spinner />  // Show spinner if loading is true
+            ) : (
               <div className="container my-3 flex-grow-1">
                 <div className="row">
                   {filtered_data.map((quiz, index) => (
@@ -132,7 +144,7 @@ export default function QuizesPage(props) {
                       </div>
 
                       {/* Insert the InfeedAd component after every 3 quizzes */}
-                      {index != 0 && (index) % 5 == 0 && (
+                      {index !== 0 && index % 5 === 0 && (
                         <div className="col-md-4">
                           <InfeedAd />
                         </div>
@@ -141,7 +153,24 @@ export default function QuizesPage(props) {
                   ))}
                 </div>
               </div>
-            }
+            )}
+            <div className="d-flex justify-content-center my-4">
+              <button 
+                onClick={handlePrevPage} 
+                disabled={currentPage === 1} 
+                className="btn btn-primary me-3"
+              >
+                Previous
+              </button>
+              <span className="align-self-center">Page {currentPage} of {totalPages}</span>
+              <button 
+                onClick={handleNextPage} 
+                disabled={currentPage === totalPages} 
+                className="btn btn-primary ms-3"
+              >
+                Next
+              </button>
+            </div>
           </div>
         </div>
       </div>
