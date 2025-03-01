@@ -451,9 +451,18 @@ export default function CreateQuiz() {
         updatedQuiz.questions[questionIndex].answer = value;
         setQuizJson(updatedQuiz);
     }
+    
+    const [isPremium, setIsPremium] = useState(false);  
+  
+    const handleCheckboxChange = (event) => {  
+      setIsPremium(event.target.checked);  
+    };  
 
     const saveQuiz = () => {
-        const url = HOST + 'api/createquiz';
+        let url = HOST + 'api/createquiz';
+        if (isPremium){
+            url = HOST + 'api/create-premium-quiz';
+        }
         fetch(url, {
             method: 'POST',
             headers: {
@@ -477,6 +486,7 @@ export default function CreateQuiz() {
             });
         navigate("/allquizes");
     }
+
 
     return (
         <div className="container">
@@ -506,6 +516,15 @@ export default function CreateQuiz() {
                             onChange={(e) => handleQuestionChange(-1, 'subject', e.target.value)}
                         />
                     </div>
+                    <label>  
+                        <input  
+                        type="checkbox"  
+                        checked={isPremium}  
+                        onChange={handleCheckboxChange}  
+                        />  
+                        Premium  
+                    </label>  
+
                     {quizJson.questions.map((question, qIndex) => (
                         <div key={qIndex} className="question-container">
                             <textarea
@@ -534,6 +553,7 @@ export default function CreateQuiz() {
                             </select>
                         </div>
                     ))}
+
                     <button onClick={saveQuiz}>Save and Submit Quiz</button>
                 </div>
             )}

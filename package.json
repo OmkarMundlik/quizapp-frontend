@@ -14,6 +14,7 @@
     "ag-charts-react": "^10.2.0",
     "axios": "^1.7.3",
     "dotenv": "^16.4.5",
+    "html2pdf.js": "^0.10.3",
     "js-cookie": "^3.0.5",
     "lottie-react": "^2.4.0",
     "react": "^18.2.0",

@@ -101,7 +101,7 @@ export default function QuizesPage(props) {
 
       <Navbar />
 
-      <h1 className="text-center mt-4">MPSC Test Series 2024</h1>
+      <h1 className="text-center mt-4">MPSC Test Series 2025</h1>
 
       <div className="container">
         <div className="row justify-content-center">
@@ -136,7 +136,7 @@ export default function QuizesPage(props) {
                             <div className="card-body">
                               <h5 className="card-title">Date: {formatDate(quiz.date)}</h5>
                               <h5 className="card-title">Subject: {quiz.subject}</h5>
-                              <Link className="btn btn-sm btn-dark" to={`/start/${quiz._id}`}>Start Test</Link>
+                              <Link className="btn btn-sm btn-dark" to={`/start/${quiz._id}`} style={{ fontSize: '1.25rem', padding: '10px 20px' }}>Start Test</Link>
                               <p className="card-text my-2"><small className="text-muted">By team@spardhaweb on {new Date(quiz.date).toUTCString()}</small></p>
                             </div>
                           </div>

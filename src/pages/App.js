@@ -30,6 +30,10 @@ import Error from '../components/Error';
 import Login from '../components/Login';
 import Signup from '../components/Signup'
 import UserProtectedRoute from '../components/UserProtectedRoute';
+import PremiumPage from './PremiumPage';
+import PremiumTests from './PremiumTests';
+import PremiumQuiz from './PremiumQuiz';
+import PremiumResult from './PremiumResult';
 
 function App() {
   const router = createBrowserRouter([
@@ -111,8 +115,24 @@ function App() {
       element: <LatestUpdate />
     },
     {
+      path: "/premium",
+      element: <PremiumPage />
+    },
+    {
       path: "/create-updates",
       element: <AdminProtected Component={CreateLatestUpdate}/>
+    },
+    {
+      path: "/premium-tests",
+      element: <PremiumTests />
+    },
+    {
+      path : "/get-premium-quiz/:quizId",
+      element : <PremiumQuiz />
+    },
+    {
+      path : "/premium-result",
+      element : <PremiumResult />
     },
     // {
     //   path: "/dashboard",

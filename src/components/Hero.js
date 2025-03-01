@@ -18,7 +18,7 @@ export default function Hero() {
                 </div>
                 <div className="hero-buttons d-grid gap-2 d-sm-flex justify-content-sm-center mb-5" style={{width:"100%"}}>
                     <Link className="btn btn-primary btn-lg px-4 gap-3" to="/allquizes" role="button" >Test Series</Link>
-                    <Link className="btn btn-primary btn-lg px-4 gap-3" to="/articles" role="button">Current Affairs 2024</Link>
+                    <Link className="btn btn-primary btn-lg px-4 gap-3" to="/articles" role="button">Current Affairs 2025</Link>
                     <Link className="btn btn-primary btn-lg px-4 gap-3" to="/ebooks" role="button">Study Material</Link>
                     <Link className="btn btn-primary btn-lg px-4 gap-3" to="/latest-updates" role="button">Latest Updates</Link>
 
