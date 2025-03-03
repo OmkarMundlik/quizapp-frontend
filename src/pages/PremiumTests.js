@@ -3,8 +3,6 @@ import Navbar from '../components/Navbar';
 import { Link } from 'react-router-dom';  
 import Spinner from '../components/Spinner';  
 import Footer from '../components/Footer';  
-import InfeedAd from '../components/InfeedAd';  
-import DisplayAd from '../components/DisplayAd';  
 import { Helmet } from 'react-helmet';  
 import '../styles/PremiumTests.css'
 import EnglishVocabImg from '../assets/EnglishVocab.jpeg'
@@ -144,7 +142,7 @@ export default function PremiumTests(props) {
                                     src={EnglishVocabImg}  
                                     className="card-img-top"  
                                     alt="..."  
-                                  />  
+                                  />
                                   <div className="card-body">  
                                     <h5 className="card-title">Date: {formatDate(quiz.date)}</h5>  
                                     <h5 className="card-title">{quiz.subject}</h5>  

@@ -34,6 +34,7 @@ import PremiumPage from './PremiumPage';
 import PremiumTests from './PremiumTests';
 import PremiumQuiz from './PremiumQuiz';
 import PremiumResult from './PremiumResult';
+import CreatePremiumBatch from './CreatePremiumBatch';
 
 function App() {
   const router = createBrowserRouter([
@@ -121,6 +122,10 @@ function App() {
     {
       path: "/create-updates",
       element: <AdminProtected Component={CreateLatestUpdate}/>
+    },
+    {
+      path : "/create-new-batch",
+      element : <AdminProtected Component={CreatePremiumBatch} />
     },
     {
       path: "/premium-tests",

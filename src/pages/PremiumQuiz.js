@@ -24,7 +24,7 @@ export default function PremiumQuiz(props) {
     const [startTime, setStartTime] = useState(null); // Initialize startTime  
     const [code, setCode] = useState('');  
     const [isCodeVerified, setIsCodeVerified] = useState(false);  
-    const staticCode = '123456'; // Static code for verification  
+    const staticCode = 'spardhaweb@vocab'; // Static code for verification  
   
     const fetchData = async () => {  
         try {  

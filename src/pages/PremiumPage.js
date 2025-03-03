@@ -1,4 +1,4 @@
-import React, { useState } from 'react';  
+import React, { useEffect, useState } from 'react';  
 import Navbar from '../components/Navbar';  
 import Footer from '../components/Footer';  
 import { Link } from 'react-router-dom';  
@@ -8,10 +8,37 @@ import EnglishVocabImg from '../assets/EnglishVocab.jpeg'
 
 export default function PremiumPage() {  
     const [batches, setBatches] = useState([{ "_id": 1, "name": "English Vocabulary Test Series", "imageUrl": EnglishVocabImg, "descr": "Batch starting from 1 Mar 2025."}]);  
-    const [currentPage, setCurrentPage] = useState(1);  
-    const [totalPages, setTotalPages] = useState(1);  
+    // const [currentPage, setCurrentPage] = useState(1);  
+    // const [totalPages, setTotalPages] = useState(1);  
     const [loading, setLoading] = useState(false);  
-  
+    const HOST = process.env.REACT_APP_HOST_NAME;
+
+    const fetchData = async () => {
+        setLoading(true); 
+        try {
+            const response = await fetch(`${HOST}api/fetch-premium-batches`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+            if (!response.ok) {
+                throw new Error('Failed to fetch quizzes');
+            }
+            const data = await response.json();
+
+            setBatches(data);
+        } catch (error) {
+            console.error('Error fetching quizzes:', error);
+        } finally {
+            setLoading(false);  // Set loading to false after fetching is done
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+    
     return (  
         <>  
             <Navbar />  
@@ -37,10 +64,12 @@ export default function PremiumPage() {
                                             <div className="col-md-4">  
                                                 <div className="my-3">  
                                                     <div className="card">  
-                                                        <img src={details.imageUrl} className="card-img-top" alt="..." style={{height:"250px"}}/>  
+                                                        <img src={details.imageUrl? details.imageUrl : EnglishVocabImg} className="card-img-top" alt="..." style={{height:"250px"}}/>  
                                                         <div className="card-body">  
                                                             <h5 className="card-title">{details.name}</h5>  
-                                                            <h5 className="card-text">{details.descr}</h5>  
+                                                            <h5 className="card-text">Subject: {details.subject}</h5>  
+                                                            <h5 className="card-text">{details.description}</h5>  
+
                                                             <Link className="btn btn-sm btn-dark" to={`/premium-tests`} style={{ fontSize: '1.25rem', padding: '10px 20px' }}>GO TO BATCH</Link>  
                                                             {/* <p className="card-text my-2"><small className="text-muted">By team@spardhaweb on {new Date(details.date).toUTCString()}</small></p> */}  
                                                         </div>  
