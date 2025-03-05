@@ -43,6 +43,7 @@ export default function PremiumTests(props) {
   const [currentPage, setCurrentPage] = useState(1);  
   const [totalPages, setTotalPages] = useState(1);  
   const [loading, setLoading] = useState(true);  
+  const batchId = "67c349e66e73cfb0b71a4901"
 //   const [code, setCode] = useState('');  
 //   const [codeEntered, setCodeEntered] = useState(false);  
 //   const correctCode = 'ASDFGHJ'; // Replace with your static code  
@@ -119,7 +120,7 @@ export default function PremiumTests(props) {
                   style={{ cursor: 'pointer', fontSize: '1.2rem', borderRadius: '8px', fontWeight: 'bold' }}  
                 >  
                   {categoryList[0]}  
-                </div>  
+                </div>
               ))}  
             </div>   */}
           </div>  
@@ -136,7 +137,7 @@ export default function PremiumTests(props) {
                         <React.Fragment key={quiz._id}>  
                           <div className="col-md-4">  
                             <div className="my-3">  
-                              <Link to={`/get-premium-quiz/${quiz._id}`} className="card-link">  
+                              <Link to={`/get-premium-quiz/${batchId}/${quiz._id}`} className="card-link">  
                                 <div className="card" style={{ cursor: 'pointer' }}>  
                                   <img  
                                     src={EnglishVocabImg}  

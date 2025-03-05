@@ -18,13 +18,15 @@ export default function PremiumQuiz(props) {
     };  
   
     const HOST = process.env.REACT_APP_HOST_NAME;  
-    const { quizId } = useParams();  
+    const { quizId, batchId } = useParams();  
     const [id, setId] = useState(quizId);  
-    const { quizData, setQuizData } = useContext(ResultContext);  
+    const { quizData, setQuizData, score, setScore, responses, setResponses } = useContext(ResultContext);  
+    const [batchData, setBatchData] = useState(null); // Local state for batch data  
     const [startTime, setStartTime] = useState(null); // Initialize startTime  
     const [code, setCode] = useState('');  
     const [isCodeVerified, setIsCodeVerified] = useState(false);  
-    const staticCode = 'spardhaweb@vocab'; // Static code for verification  
+    const [staticCode, setStaticCode] = useState('');  
+    const [loading, setLoading] = useState(true); // State to manage loading  
   
     const fetchData = async () => {  
         try {  
@@ -42,22 +44,42 @@ export default function PremiumQuiz(props) {
         } catch (error) {  
             console.error('Error fetching quizzes:', error);  
         }  
-    }  
+    };  
   
-    const { score, setScore, responses, setResponses } = useContext(ResultContext);  
-    const [localResponse, setlocalResponse] = useState([]);  
+    const fetchBatchData = async () => {  
+        try {  
+            const response = await fetch(HOST + `api/get-premium-batch/${batchId}`, {  
+                method: "GET",  
+                headers: {  
+                    "Content-Type": "application/json"  
+                }  
+            });  
+            if (!response.ok) {  
+                throw new Error('Failed to fetch batch data');  
+            }  
+            const data = await response.json();  
+            setBatchData(data);  
+            setStaticCode(data.password);  // Set staticCode to batchData.password  
+            setLoading(false); // Set loading to false after fetching is done  
+        } catch (error) {  
+            console.error('Error fetching batch data:', error);  
+        }  
+    };  
+  
+    const [localResponse, setLocalResponse] = useState([]);  
   
     useEffect(() => {  
+        fetchBatchData();  
         setId(quizId);  
         fetchData();  
         setStartTime(Date.now());  
-    }, [])  
+    }, [quizId, batchId]);  
   
     useEffect(() => {  
         if (quizData != null) {  
-            setlocalResponse(Array(quizData.questions.length).fill("0"));  
+            setLocalResponse(Array(quizData.questions.length).fill("0"));  
         }  
-    }, [quizData])  
+    }, [quizData]);  
   
     const navigate = useNavigate();  
   
@@ -65,7 +87,7 @@ export default function PremiumQuiz(props) {
         // This function is called whenever a user selects an answer  
         let copyRes = localResponse;  
         copyRes[id] = option;  
-        setlocalResponse(copyRes);  
+        setLocalResponse(copyRes);  
     };  
   
     const onSubmit = async () => {  
@@ -116,7 +138,7 @@ export default function PremiumQuiz(props) {
   
         // Redirect the user to the result page  
         navigate('/premium-result');  
-    }  
+    };  
   
     const handleCodeSubmit = () => {  
         if (code === staticCode) {  
@@ -124,13 +146,15 @@ export default function PremiumQuiz(props) {
         } else {  
             alert('Invalid code. Please try again.');  
         }  
-    }  
+    };  
   
     return (  
         <>  
             <Navbar />  
-            {!isCodeVerified ? (  
-                <div className="container code-verification-container" style={{ width: "50%",margin:"auto"}}>  
+            {loading ? (  
+                <Spinner />  
+            ) : !isCodeVerified ? (  
+                <div className="container code-verification-container" style={{ width: "50%", margin: "auto" }}>  
                     <h2>Enter the code to access the quiz:</h2>  
                     <input  
                         type="text"  

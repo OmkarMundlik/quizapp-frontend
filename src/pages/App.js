@@ -35,6 +35,8 @@ import PremiumTests from './PremiumTests';
 import PremiumQuiz from './PremiumQuiz';
 import PremiumResult from './PremiumResult';
 import CreatePremiumBatch from './CreatePremiumBatch';
+import UpdatePremiumBatch from './UpdatePremiumBatch';
+import AdminPremiumBatches from './AdminPremiumBatches';
 
 function App() {
   const router = createBrowserRouter([
@@ -128,11 +130,19 @@ function App() {
       element : <AdminProtected Component={CreatePremiumBatch} />
     },
     {
+      path : "/update-batch/:batchId",
+      element : <AdminProtected Component={UpdatePremiumBatch} />
+    },
+    {
+      path : "/all-batches-admin",
+      element : <AdminProtected Component={AdminPremiumBatches} />
+    },
+    {
       path: "/premium-tests",
       element: <PremiumTests />
     },
     {
-      path : "/get-premium-quiz/:quizId",
+      path : "/get-premium-quiz/:batchId/:quizId",
       element : <PremiumQuiz />
     },
     {

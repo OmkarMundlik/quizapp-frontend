@@ -36,7 +36,7 @@ function AdminPage() {
         <Link className="button-link" to="/uploadcontent">Upload Study Material</Link>
         <Link className="button-link" to="/create-updates">Upload Latest Updates</Link>
         <Link className="button-link" to="/create-new-batch">Add Premium Batch</Link>
-        {/* <Link className="button-link" to="/show-all-batches">Update Premium Batch</Link> */}
+        <Link className="button-link" to="/all-batches-admin">All Premium Batches</Link>
 
         <button className="logout-button" onClick={logout}>Log out</button>
       </div>

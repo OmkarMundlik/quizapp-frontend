@@ -17,11 +17,11 @@ export default function Hero() {
                     <p className="m-4 p-4">Access daily quizzes covering various topics and stay updated with one-liner current affairs in Marathi. We provide tailored resources to enhance your preparation, ensuring you're equipped with the knowledge and confidence to ace the exam. Start your journey to success today!</p>
                 </div>
                 <div className="hero-buttons d-grid gap-2 d-sm-flex justify-content-sm-center mb-5" style={{width:"100%"}}>
+                    <Link className="btn btn-primary btn-lg px-4 gap-3" to="/premium" role="button">Premium</Link>
                     <Link className="btn btn-primary btn-lg px-4 gap-3" to="/allquizes" role="button" >Test Series</Link>
                     <Link className="btn btn-primary btn-lg px-4 gap-3" to="/articles" role="button">Current Affairs 2025</Link>
                     <Link className="btn btn-primary btn-lg px-4 gap-3" to="/ebooks" role="button">Study Material</Link>
                     <Link className="btn btn-primary btn-lg px-4 gap-3" to="/latest-updates" role="button">Latest Updates</Link>
-
                 </div>
             </div>
 
