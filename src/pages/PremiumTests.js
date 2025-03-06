@@ -154,7 +154,7 @@ export default function PremiumTests(props) {
                                     </p>  
                                     <Link  
                                       className="btn btn-sm btn-dark"  
-                                      to={`/get-premium-quiz/${quiz._id}`}  
+                                      to={`/get-premium-quiz/${batchId}/${quiz._id}`}  
                                       onClick={(e) => e.stopPropagation()}  
                                       style={{ fontSize: '1.25rem', padding: '10px 20px' }}  
                                     >  
