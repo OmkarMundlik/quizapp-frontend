@@ -112,7 +112,7 @@ function SubHero() {
         fetchQuizesData();
         fetchData('study_material');
         fetchData('latestupdate');
-        console.log(articles)
+        // console.log(articles)
     }, []);
 
     return (

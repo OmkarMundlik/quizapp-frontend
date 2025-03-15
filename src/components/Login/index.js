@@ -13,7 +13,7 @@ export default function Login() {
 
   async function handleGoogleLoginSuccess(tokenResponse) {
     const accessToken = tokenResponse.access_token;
-    console.log(accessToken);
+    // console.log(accessToken);
 
     let response = await fetch(process.env.REACT_APP_HOST_NAME + 'api/login', {
       method: 'POST',
@@ -22,7 +22,7 @@ export default function Login() {
     });
     
     response = await response.json();
-    console.log(response);
+    // console.log(response);
 
     if (response.success === 1) {
       Cookies.set('jwtoken', response.jwtoken, { expires: 7 });
@@ -51,7 +51,7 @@ export default function Login() {
     });
 
     response = await response.json();
-    console.log(response);
+    // console.log(response);
 
     if (response.success === 1) {
       Cookies.set('jwtoken', response.jwtoken, { expires: 7 });

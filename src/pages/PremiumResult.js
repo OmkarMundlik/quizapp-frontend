@@ -160,8 +160,8 @@ export default function PremiumResult() {
 //     };  
   
 //     const { quizData, score, responses } = useContext(ResultContext);  
-//     console.log("Score", score);  
-//     console.log("Responses", responses);  
+//     // console.log("Score", score);  
+//     // console.log("Responses", responses);  
   
 //     useEffect(() => {  
 //         fetchData();  

@@ -53,7 +53,7 @@ function AllArticles() {
             showAlert("Article Deleted successfully!!", "success");
         } catch (error) {
             showAlert("Error in deleting article!!", "success");
-            console.log(error);
+            // console.log(error);
             // Handle error, show error message, etc.
         }
     };

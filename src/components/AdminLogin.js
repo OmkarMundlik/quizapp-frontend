@@ -8,7 +8,7 @@ function AdminLogin() {
     const [password, setPassword] = useState("");
     const {alertContext, setAlertContext} = useContext(ResultContext);
     const HOST = process.env.REACT_APP_HOST_NAME;
-    // console.log(HOST)
+    // // console.log(HOST)
     // useEffect(() => {
     //     if (alertContext.isActive) {
     //       const timeout = setTimeout(() => {
@@ -32,7 +32,7 @@ function AdminLogin() {
     const navigate = useNavigate();
 
     const handleLogin = async () => {
-        // console.log('Hello');
+        // // console.log('Hello');
         try {  
             const response = await fetch(HOST + 'api/auth/adminlogin', {
                 method: 'POST', 
@@ -46,10 +46,10 @@ function AdminLogin() {
                 const data = await response.json(); //Fix: Use response.json() to parse the response body
                 const adminToken = data.adminToken;
                 localStorage.setItem('admin-token', adminToken);
-                // console.log(localStorage.getItem('admin-token'));
+                // // console.log(localStorage.getItem('admin-token'));
                 showAlert('Login Successful!!', 'success');
                 navigate('/adminpage');
-                // console.log('Admin token:', adminToken);
+                // // console.log('Admin token:', adminToken);
             } else {
                 showAlert('Enter Correct Credentials', 'danger');
                 console.error('Login failed');

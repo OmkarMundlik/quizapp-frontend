@@ -128,12 +128,12 @@ export default function PremiumQuiz(props) {
                 if (!response.ok) throw new Error('Failed to submit quiz attempt');  
   
                 const result = await response.json();  // Parse the response JSON  
-                console.log('Quiz attempt submitted successfully:', result);  
+                // console.log('Quiz attempt submitted successfully:', result);  
             } catch (error) {  
                 console.error('Error submitting quiz attempt:', error);  
             }  
         } else {  
-            console.log('User is not logged in. Quiz result will not be stored.');  
+            // console.log('User is not logged in. Quiz result will not be stored.');  
         }  
   
         // Redirect the user to the result page  

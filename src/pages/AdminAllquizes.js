@@ -66,13 +66,13 @@
 //         });
 
 //         const { success } = await response.json();
-//         // console.log(success)
+//         // // console.log(success)
 //         let newQuizes = quizes.filter((quiz) => quiz._id !== id);
 //         setQuizes(newQuizes)
 //         showAlert('Quiz Deleted Successfully!!!', 'success');
 //     } catch (error) {
 //         showAlert('Error in deleting Quiz!!!', 'danger');
-//         console.log(error);
+//         // console.log(error);
 //     }
 // }
 
@@ -144,13 +144,13 @@ export default function AdminAllquizes(props) {
             });
 
             const { success } = await response.json();
-            // console.log(success)
+            // // console.log(success)
             let newQuizes = quizes.filter((quiz) => quiz._id !== id);
             setQuizes(newQuizes)
             showAlert('Quiz Deleted Successfully!!!', 'success');
         } catch (error) {
             showAlert('Error in deleting Quiz!!!', 'danger');
-            console.log(error);
+            // console.log(error);
         }
     }
 

@@ -37,7 +37,7 @@ export default function Signup() {
       headers: { 'content-type': 'application/json' }
     });
     response = await response.json();
-    // console.log(response);
+    // // console.log(response);
     if (response.success === 1) {
       Cookies.set('user', JSON.stringify(response.user));
       Cookies.set('jwtoken', response.jwtoken, { expires: 7, secure: false });
@@ -71,14 +71,14 @@ export default function Signup() {
 
   async function handleGoogleLoginSuccess(tokenResponse) {
     const accessToken = tokenResponse.access_token;
-    console.log(accessToken);
+    // console.log(accessToken);
     let response = await fetch(process.env.REACT_APP_HOST_NAME + "/signup", {
       method: "post",
       body: JSON.stringify({ googleAccessToken: accessToken }),
       headers: { 'content-type': 'application/json' }
     });
     response = await response.json();
-    console.log(response);
+    // console.log(response);
 
     Cookies.set('user', JSON.stringify(response.user));
     Cookies.set('jwtoken', response.jwtoken, { expires: 7, secure: false });

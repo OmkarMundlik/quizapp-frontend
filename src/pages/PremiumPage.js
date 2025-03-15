@@ -70,7 +70,7 @@ export default function PremiumPage() {
                                                             <h5 className="card-text">Subject: {details.subject}</h5>  
                                                             <h5 className="card-text">{details.description}</h5>  
 
-                                                            <Link className="btn btn-sm btn-dark" to={`/premium-tests`} style={{ fontSize: '1.25rem', padding: '10px 20px' }}>GO TO BATCH</Link>  
+                                                            <Link className="btn btn-sm btn-dark" to={`/premium-tests/${details._id}`} style={{ fontSize: '1.25rem', padding: '10px 20px' }}>GO TO BATCH</Link>  
                                                             {/* <p className="card-text my-2"><small className="text-muted">By team@spardhaweb on {new Date(details.date).toUTCString()}</small></p> */}  
                                                         </div>  
                                                     </div>  

@@ -12,7 +12,7 @@ function UploadContent() {
         // Construct the direct download link
         const directDownloadLink = `https://drive.google.com/uc?export=download&id=${file_id}`;
 
-        // console.log(directDownloadLink)
+        // // console.log(directDownloadLink)
         return directDownloadLink;
     };
 
@@ -79,7 +79,7 @@ function UploadContent() {
                 contentViewUrl: contentUrl
             };
 
-            // console.log(uploadObj);
+            // // console.log(uploadObj);
 
             const url = HOST + 'api/uploadstudymaterial';
             const response = await fetch(url, {
@@ -96,10 +96,10 @@ function UploadContent() {
             }
             const data = await response.json();
             showAlert('Material Uploaded Successfully!!', 'success');
-            // console.log('Article created successfully:', data.message);
+            // // console.log('Article created successfully:', data.message);
         } catch (error) {
             showAlert('There was a problem Uploading Material', 'danger');
-            // console.log(uploadObj)
+            // // console.log(uploadObj)
             console.error('There was a problem creating the article:', error.message);
         }
         setSpinner(false);

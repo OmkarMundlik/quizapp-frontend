@@ -47,7 +47,7 @@ export default function Dashboard() {
       }
 
       const analyticsData = await response.json();  // Parse the response JSON
-      // console.log("User analytics:", analyticsData);  // For debugging
+      // // console.log("User analytics:", analyticsData);  // For debugging
 
       // Set analytics data to state
       setAnalytics(analyticsData);
@@ -81,7 +81,7 @@ export default function Dashboard() {
       <h1>Welcome, {userDetails ? userDetails.Name : 'Guest'} </h1>
 
       {/* Check if data is still being loaded */}
-      {console.log(Cookies.get('jwtoken'))}
+      {/* {console.log(Cookies.get('jwtoken'))} */}
       {loading ? (
         <p>Loading analytics...</p>
       ) : (

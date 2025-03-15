@@ -43,7 +43,7 @@ export default function CreateQuiz() {
             subheading: "",
             text: ""
         })
-        // console.log(subparts);
+        // // console.log(subparts);
     }
 
     const renderQuestionList = () => {
@@ -101,7 +101,7 @@ export default function CreateQuiz() {
                 imageUrl: imageUrl
             };
 
-            // console.log(articleObj);
+            // // console.log(articleObj);
             const url = HOST + 'api/createarticle';
             const response = await fetch(url, {
                 method: 'POST',
@@ -117,7 +117,7 @@ export default function CreateQuiz() {
             }
             const data = await response.json();
             showAlert('Article Created Successfully!!', 'success');
-            // console.log('Article created successfully:', data.message);
+            // // console.log('Article created successfully:', data.message);
         } catch (error) {
             showAlert('There was a problem creating the article', 'danger');
             // console.error('There was a problem creating the article:', error.message);

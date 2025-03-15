@@ -115,7 +115,7 @@ export default function CreateLatestUpdate() {
                 youtubeVid: youtubeVid
             };
 
-            // console.log(linksObj);
+            // // console.log(linksObj);
             const url = HOST + 'api/upload-links';
             const response = await fetch(url, {
                 method: 'POST',
@@ -131,7 +131,7 @@ export default function CreateLatestUpdate() {
             }
             const data = await response.json();
             showAlert('Article Created Successfully!!', 'success');
-            // console.log('Article created successfully:', data.message);
+            // // console.log('Article created successfully:', data.message);
         } catch (error) {
             showAlert('There was a problem creating the article', 'danger');
             // console.error('There was a problem creating the article:', error.message);
