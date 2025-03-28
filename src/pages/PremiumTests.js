@@ -293,7 +293,7 @@ export default function PremiumTests(props) {
                                                                     <h5 className="card-title">Date: {formatDate(quiz.date)}</h5>
                                                                     <h5 className="card-title">{quiz.subject}</h5>
                                                                 </div>
-                                                                
+
                                                             </div>
                                                         </Link>
                                                     </div>
@@ -306,6 +306,23 @@ export default function PremiumTests(props) {
                                 <h3 className="text-center my-5">No quizzes available yet.</h3>
                             )
                         )}
+                        <div className="d-flex justify-content-center my-4">
+                            <button
+                                onClick={handlePrevPage}
+                                disabled={currentPage === 1}
+                                className="btn btn-primary me-3"
+                            >
+                                Previous
+                            </button>
+                            <span className="align-self-center">Page {currentPage} of {totalPages}</span>
+                            <button
+                                onClick={handleNextPage}
+                                disabled={currentPage === totalPages}
+                                className="btn btn-primary ms-3"
+                            >
+                                Next
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
